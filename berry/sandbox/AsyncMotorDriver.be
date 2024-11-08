@@ -3,7 +3,7 @@ class AsyncStepperMotorDriver
     var enabled, direction, target_step, current_step
     var step_interval, homing_step_interval
     var last_step_millis, this_step_millis, last_scheduler_millis
-    var is_homing 
+    var is_homing
 
     # Constructor takes GPIO pins for enable, direction, and step
     def init(enable_pin, dir_pin, step_pin, endstop_home_pin)
