@@ -71,13 +71,5 @@
                 end
                 self.old_state = this_state
             end
-
         end
-
-
     end
-
-    var encoder = RotaryEncoder(22,23)
-    var cb = def(dir, cnt) print(cnt) end
-    tasmota.add_driver(encoder)
-    #encoder.set_on_tick_callback( cb )
