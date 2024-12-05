@@ -60,7 +60,7 @@ end
 autoload_module.fetch = def (url, filepath)
     import string
     try
-        var file_size = tasmota.urlfetch(url)
+        var file_size = tasmota.urlfetch(url, filepath)
         if (file_size)
             #tasmota.cmd("UfsDelete " + filepath)
         end
@@ -81,39 +81,12 @@ autoload_module.update = def ()
 end
 
 autoload_module.update_system = def ()
-    #update autoloader
-    var self_update_url = autoload_module.fetch_url + autoload_module.self_update_path
-    autoload_module.fetch_be_and_delete_compiled(self_update_url, "autoload")
     #fetch all berry component
     for f: autoload_module.update_files
         var url = autoload_module.fetch_url + f
         print(url)
-        autoload_module.fetch_be_and_delete_compiled(url, f)
+        autoload_module.fetch(url, f)
     end
-
-
-    for f: autoload_module.update_files
-        autoload_module.fetch_be_and_delete_compiled(self_update_url, "autoload")
-        import string
-        var is_loaded = load(f + ".bec") 
-        var message
-        if (!is_loaded)
-            var is_compiled = tasmota.compile(f + ".be")
-            if is_compiled
-                is_loaded = load(f + ".bec")
-                if (is_loaded)
-                    tasmota.cmd("UfsDelete " + f + ".be")
-                    message = "%s is compiled and loaded."
-                end
-            end
-            message = "%s is not present!"
-        else
-            message = "%s is loaded."
-        end
-        print (string.format(message, f))
-    end
-
-
 end
 
 return autoload_module
