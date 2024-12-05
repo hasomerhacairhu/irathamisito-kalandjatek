@@ -18,6 +18,6 @@ var autoload_files_for_topic = {
     "EMBASSY1_3":"na.be",
     "PROJECTOR":"na.be",    
 }
-
-print(autoload_files_for_topic[topic])
+import string
+log(string.format("Loading: %s", autoload_files_for_topic[topic]))
 load(autoload_files_for_topic[topic])

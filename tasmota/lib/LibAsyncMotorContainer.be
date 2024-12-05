@@ -88,12 +88,12 @@ class AsyncStepperMotorManager
     end
 end
 
-var manager = AsyncStepperMotorManager()
+# var manager = AsyncStepperMotorManager()
 
-tasmota.cmd("AddAsyncMotor {\"enable_pin\": 16, \"dir_pin\": 17, \"step_pin\": 18, \"endstop_home_pin\": 19 }")
-tasmota.cmd("AddAsyncMotor {\"enable_pin\": 20, \"dir_pin\": 21, \"step_pin\": 22, \"endstop_home_pin\": 23 }")
-tasmota.cmd("SetMotorStepInterval1 30")
-tasmota.cmd("SetMotorHomingStepInterval1 500")
+# tasmota.cmd("AddAsyncMotor {\"enable_pin\": 16, \"dir_pin\": 17, \"step_pin\": 18, \"endstop_home_pin\": 19 }")
+# tasmota.cmd("AddAsyncMotor {\"enable_pin\": 20, \"dir_pin\": 21, \"step_pin\": 22, \"endstop_home_pin\": 23 }")
+# tasmota.cmd("SetMotorStepInterval1 30")
+# tasmota.cmd("SetMotorHomingStepInterval1 500")
 
-tasmota.cmd("SetMotorStepInterval2 60")
-tasmota.cmd("SetMotorHomingStepInterval2 400")
+# tasmota.cmd("SetMotorStepInterval2 60")
+# tasmota.cmd("SetMotorHomingStepInterval2 400")
