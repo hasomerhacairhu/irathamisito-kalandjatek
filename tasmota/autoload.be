@@ -17,7 +17,7 @@ autoload_module.update_files = [
     "autoexec/radio2.be",
     "autoexec/suitcase1.be",
     "autoexec/suitcase2.be",
-    "autoexec/projector.be",
+    "autoexec/projector1.be",
 ]
 
 autoload_module.lib_files = [
