@@ -15,7 +15,7 @@ var autoload_files_for_topic = {
     "RADIO2":"/autoexec/radio2.be",
     "EMBASSY1_1":"/autoexec/embassy1.be",
     "EMBASSY1_2":"/autoexec/embassy2.be",
-    "PROJECTOR":"/autoexec/projector.be",    
+    "PROJECTOR":"/autoexec/projector1.be",    
 }
 import string
 log(string.format("Loading: %s", autoload_files_for_topic[topic]))

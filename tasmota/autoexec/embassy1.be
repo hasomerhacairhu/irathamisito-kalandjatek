@@ -1,0 +1,1 @@
+tasmota.cmd("I2SGain 30")

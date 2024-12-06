@@ -61,7 +61,3 @@ class Multiplexer
     end
 end
 
-#var mux = Multiplexer()
-#mux.set_address_pins(16,17,5,18)
-#mux.set_common_analog_input_pin(34)
-#tasmota.add_driver(mux)

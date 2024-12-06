@@ -1,2 +1,3 @@
-var encoder = RotaryEncoder(22,23)
-tasmota.add_driver(encoder)
+tasmota.cmd("I2SGain 30")
+
+#sd speaker gombok ledek

@@ -1,2 +1,23 @@
-var encoder = RotaryEncoder(22,23)
+tasmota.cmd("SetOption43 100")
+tasmota.cmd("SetOption114 1")
+tasmota.cmd("SwitchMode0 16")
+
+#led mux rotary
+
+#A Tasmota konfiguracioban ne legyen beallitva a gyari rotary driver
+
+var PIN_ROTARY_A = 0
+var PIN_ROTARY_B = 1
+var PIN_MUX_ADDR_1 = 12
+var PIN_MUX_ADDR_2 = 13
+var PIN_MUX_ADDR_3 = 14
+var PIN_MUX_ADDR_4 = 15
+var PIN_MUX_COM = 5
+
+var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
 tasmota.add_driver(encoder)
+
+var mux = Multiplexer()
+mux.set_address_pins(PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3,PIN_MUX_ADDR_4)
+mux.set_common_analog_input_pin(PIN_MUX_COM)
+tasmota.add_driver(mux)
