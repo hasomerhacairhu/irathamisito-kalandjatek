@@ -14,13 +14,17 @@ autoload_module.update_files = [
     "autoexec/embassy1.be",
     "autoexec/embassy2.be",
     "autoexec/radio1.be",
+    "autoexec/radio2.be",
     "autoexec/suitcase1.be",
     "autoexec/suitcase2.be",
+    "autoexec/projector.be",
 ]
 
 autoload_module.lib_files = [
     "lib/LibMultiplexer.be",
     "lib/LibRotaryEncoder.be",
+    "lib/LibAsyncMotorContainer.be",
+    "lib/LibAsyncMotorDriver.be",
 ]
 
 
@@ -51,6 +55,7 @@ autoload_module.fetch = def (url, filepath)
         if (file_size)
             print (string.format("Downloaded %d bytes.", file_size)) 
         end
+        tasmota.yield()
     except .. as variable, message
         print (string.format("Could not fetch %s. Error: %s (%s)", url, variable, message)) 
     end 

@@ -47,7 +47,7 @@ class Multiplexer
         import string
         for address: 0 .. 15
             self.write_out_address(address)
-            self.values[address] = tasmota.cmd("status 10")['StatusSNS']['ANALOG']['A1']
+            self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
             if (math.abs(self.values[address] - self.old_values[address]) > self.tolerance)
                 is_dirty = true
             end
