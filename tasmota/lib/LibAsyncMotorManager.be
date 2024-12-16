@@ -23,6 +23,7 @@ class AsyncMotorManager
         # import AsyncStepperMotorDriver
         var motor = AsyncMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
         self.motors.push(motor)
+        return motor
     end
 
     def add_motor_cmd(cmd, idx, payload, payload_json)
