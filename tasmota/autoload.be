@@ -23,8 +23,8 @@ autoload_module.update_files = [
 autoload_module.lib_files = [
     "lib/LibMultiplexer.be",
     "lib/LibRotaryEncoder.be",
-    "lib/LibAsyncMotorManager.be",
     "lib/LibAsyncMotorDriver.be",
+    "lib/LibAsyncMotorManager.be",
 ]
 
 
