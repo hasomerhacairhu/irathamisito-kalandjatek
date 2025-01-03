@@ -1,9 +1,10 @@
-class AsyncStepperMotorDriver
+class AsyncMotorDriver
     var enable_pin, dir_pin, step_pin, endstop_home_pin
     var enabled, direction, target_step, current_step
     var step_interval, homing_step_interval
     var last_step_millis, this_step_millis, last_scheduler_millis
-    var is_homing 
+    var is_homing
+    var scheduler
 
     # Constructor takes GPIO pins for enable, direction, and step
     def init(enable_pin, dir_pin, step_pin, endstop_home_pin)
@@ -11,8 +12,8 @@ class AsyncStepperMotorDriver
         self.dir_pin = dir_pin
         self.step_pin = step_pin
         self.endstop_home_pin = endstop_home_pin
-        self.step_interval = 10 #100Hz
-        self.homing_step_interval = 20 #50Hz
+        self.step_interval = 20 #50Hz
+        self.homing_step_interval = 50 #20Hz
         self.is_homing = false
         
         # Set GPIO pins as output
@@ -24,8 +25,20 @@ class AsyncStepperMotorDriver
         # Default values
         self.enable()
         self.set_direction(true) # true = CW, false = CCW
+        gpio.digital_write(self.step_pin, gpio.LOW)
         self.target_step = 0
 		self.current_step = 0
+
+        
+        self.scheduler = def ()
+            var now = tasmota.millis()
+            var timePassed = now - self.last_scheduler_millis
+            var current_step_interval = self.is_homing ? self.homing_step_interval : self.step_interval
+            if timePassed >= current_step_interval
+                self.next_step()
+                self.last_scheduler_millis = now
+            end
+        end
     end
 
     def set_step_interval_ms(ms)
@@ -62,12 +75,14 @@ class AsyncStepperMotorDriver
     
     # Method to enable the motor
     def enable()
+        log("Enable motor")
         gpio.digital_write(self.enable_pin, gpio.LOW) # LOW to enable the motor
         self.enabled = true
     end
     
     # Method to disable the motor
     def disable()
+        log("Disable motor")
         gpio.digital_write(self.enable_pin, gpio.HIGH) # HIGH to disable the motor
         self.enabled = false
     end
@@ -81,6 +96,11 @@ class AsyncStepperMotorDriver
     # Method to set the direction of the motor
     def set_direction(clockwise)
         self.direction = clockwise
+    end
+    
+    # Method to set the delay between steps
+    def set_step_delay(microseconds)
+        self.step_delay = microseconds
     end
     
     # Method to start moving the motor for a given number of steps
@@ -102,30 +122,20 @@ class AsyncStepperMotorDriver
 		self._start_scheduler()        
 	end
 
-    def get?current
-
     def _start_scheduler()
+        log("Start scheduler.")
         self.last_scheduler_millis = tasmota.millis()
         self.this_step_millis = self.last_scheduler_millis
         self.last_step_millis = self.last_scheduler_millis
         # tasmota.set_timer(self.step_interval, /-> self._scheduleStep())
-        tasmota.add_fast_loop(/-> self.scheduler())
+        tasmota.add_fast_loop(self.scheduler)
     end
 
     def _stop_scheduler()
-        tasmota.remove_fast_loop(/-> self.scheduler())
+        log("Stop scheduler.")
+        tasmota.remove_fast_loop(self.scheduler)
     end
-
-    def scheduler()
-        var now = tasmota.millis()
-        var timePassed = now - self.last_scheduler_millis
-        var current_step_interval = self.is_homing ? self.homing_step_interval : self.step_interval
-        if timePassed >= current_step_interval
-            self.next_step()
-            self.last_scheduler_millis = now
-        end
-    end
-    
+   
     # Private method to schedule the next step
     def next_step()
 		var stepsAhead =  self.target_step-self.current_step
@@ -133,21 +143,17 @@ class AsyncStepperMotorDriver
         var stepDelay = self.this_step_millis - self.last_step_millis
 		
         if stepsAhead != 0 && self.enabled
-			
 			# Negative steps results in direction change
-
-			var command_direction = int(stepsAhead > 0)
-            var real_direction = int(self.direction) ^ command_direction
-     
-			gpio.digital_write(self.dir_pin, real_direction)
+			var current_direction = int(self.direction) ^ int(stepsAhead < 0)
+			gpio.digital_write(self.dir_pin, current_direction)
 			
             # Toggle step pin
             gpio.digital_write(self.step_pin, gpio.HIGH)
-            tasmota.delay(1) # Short pulse for the step signal
+            tasmota.delay(2) # Short pulse for the step signal
             log ("ms " + str(stepDelay) + "\tstepsAhead: " + str(stepsAhead) + "\t current step: " + str(self.current_step) + "\t target step: " + str(self.target_step))
             gpio.digital_write(self.step_pin, gpio.LOW)
 
-            self.current_step += command_direction ? 1 : -1
+            self.current_step += current_direction ? 1 : -1
 
             if (self.is_homing)
                 self.find_home()
@@ -161,5 +167,7 @@ class AsyncStepperMotorDriver
 end
 ###### enable_pin, dir_pin, step_pin, endstop_home_pin
 # var motor = AsyncStepperMotorDriver(12,27,25,26)
-var motor = AsyncStepperMotorDriver(25,27,14,26)
-motor.move(100)
+# var motor = AsyncMotorDriver(21,22,23,33)
+# motor.enable()
+# motor.set_step_interval_ms(30)
+# motor.move(100)

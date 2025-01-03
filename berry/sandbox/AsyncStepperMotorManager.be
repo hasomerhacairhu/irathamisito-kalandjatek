@@ -23,9 +23,10 @@ class AsyncStepperMotorManager
 
     def add_motor(enable_pin, dir_pin, step_pin, endstop_home_pin)
         #import AsyncStepperMotorDriver
+        log ("Motor has been added.");
         var motor = AsyncStepperMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
         self.motors.push(motor)
-        tasmota.resp_cmnd_done()
+        return motor
     end
 
     def add_motor_cmd(cmd, idx, payload, payload_json)
