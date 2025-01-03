@@ -6,6 +6,7 @@ class AsyncMotorManager
         self.motors = []
         tasmota.add_cmd('AddAsyncMotor', / cmd idx payload payload_json -> self.add_motor_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('AsyncMotorMove', / cmd idx payload payload_json -> self.move_motor_cmd(cmd, idx, payload, payload_json))
+        tasmota.add_cmd('AsyncMotorHoming', / cmd idx payload payload_json -> self.motor_homing_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('AsyncMotorEnable', / cmd idx payload payload_json -> self.motor_enable_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('GoToMotorPoistion', / cmd idx payload payload_json -> self.go_to_motor_position_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('SetMotorStepInterval', / cmd idx payload payload_json -> self.set_step_interval_cmd(cmd, idx, payload, payload_json))
@@ -38,6 +39,16 @@ class AsyncMotorManager
             else
                 motor.disable()
             end
+            tasmota.resp_cmnd_done()
+        else
+            tasmota.resp_cmnd_error()
+        end
+    end
+
+    def motor_homing_cmd(cmd, idx, payload, payload_json)
+        var motor = self.get_motor(idx)
+        if (motor) 
+            motor.start_homing()
             tasmota.resp_cmnd_done()
         else
             tasmota.resp_cmnd_error()

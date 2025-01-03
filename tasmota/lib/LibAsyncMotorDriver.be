@@ -51,10 +51,12 @@ class AsyncMotorDriver
 
     def find_home()
         var are_we_there_yet = false
-        are_we_there_yet = !gpio.digital_read(self.endstop_home_pin)
+        are_we_there_yet = gpio.digital_read(self.endstop_home_pin)
+        # are_we_there_yet = !gpio.digital_read(self.endstop_home_pin)
         if are_we_there_yet
             self.is_homing = false
             self.reset_position()
+            log("Home position registered.", 2)
         else
             self.move(-1)
         end
