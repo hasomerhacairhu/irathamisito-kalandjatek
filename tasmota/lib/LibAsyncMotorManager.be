@@ -6,6 +6,7 @@ class AsyncMotorManager
         self.motors = []
         tasmota.add_cmd('AddAsyncMotor', / cmd idx payload payload_json -> self.add_motor_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('AsyncMotorMove', / cmd idx payload payload_json -> self.move_motor_cmd(cmd, idx, payload, payload_json))
+        tasmota.add_cmd('AsyncMotorEnable', / cmd idx payload payload_json -> self.motor_enable_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('GoToMotorPoistion', / cmd idx payload payload_json -> self.go_to_motor_position_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('SetMotorStepInterval', / cmd idx payload payload_json -> self.set_step_interval_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('SetMotorHomingStepInterval', / cmd idx payload payload_json -> self.set_homing_step_interval_cmd(cmd, idx, payload, payload_json))
@@ -25,6 +26,22 @@ class AsyncMotorManager
         var motor = AsyncMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
         self.motors.push(motor)
         return motor
+    end
+
+    
+    def motor_enable_cmd(cmd, idx, payload, payload_json)
+        var motor = self.get_motor(idx)
+        var enabled = int(payload)
+        if (motor)
+            if (enabled) 
+                motor.enable()
+            else
+                motor.disable()
+            end
+            tasmota.resp_cmnd_done()
+        else
+            tasmota.resp_cmnd_error()
+        end
     end
 
     def add_motor_cmd(cmd, idx, payload, payload_json)
