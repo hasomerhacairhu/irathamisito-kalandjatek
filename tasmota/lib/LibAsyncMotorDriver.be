@@ -22,8 +22,8 @@ class AsyncMotorDriver
         gpio.pin_mode(self.endstop_home_pin, gpio.INPUT_PULLUP)
         
         # Default values
-        self.enabled = true
-        self.direction = true # true = CW, false = CCW
+        self.enable()
+        self.set_direction(true) # true = CW, false = CCW
         self.target_step = 0
 		self.current_step = 0
     end

@@ -1,6 +1,6 @@
 # import AsyncStepperMotorDriver
 
-class AsyncStepperMotorManager
+class AsyncMotorManager
     
     var motors
     
@@ -8,6 +8,7 @@ class AsyncStepperMotorManager
         self.motors = []
         tasmota.add_cmd('AddAsyncMotor', / cmd idx payload payload_json -> self.add_motor_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('AsyncMotorMove', / cmd idx payload payload_json -> self.move_motor_cmd(cmd, idx, payload, payload_json))
+        tasmota.add_cmd('AsyncMotorEnable', / cmd idx payload payload_json -> self.motor_enable_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('GoToMotorPoistion', / cmd idx payload payload_json -> self.go_to_motor_position_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('SetMotorStepInterval', / cmd idx payload payload_json -> self.set_step_interval_cmd(cmd, idx, payload, payload_json))
         tasmota.add_cmd('SetMotorHomingStepInterval', / cmd idx payload payload_json -> self.set_homing_step_interval_cmd(cmd, idx, payload, payload_json))
@@ -24,7 +25,7 @@ class AsyncStepperMotorManager
     def add_motor(enable_pin, dir_pin, step_pin, endstop_home_pin)
         #import AsyncStepperMotorDriver
         log ("Motor has been added.");
-        var motor = AsyncStepperMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
+        var motor = AsyncMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
         self.motors.push(motor)
         return motor
     end
@@ -46,6 +47,21 @@ class AsyncStepperMotorManager
         var motor = self.get_motor(idx)
         if (motor) 
             motor.move(int(payload))
+            tasmota.resp_cmnd_done()
+        else
+            tasmota.resp_cmnd_error()
+        end
+    end
+
+    def motor_enable_cmd(cmd, idx, payload, payload_json)
+        var motor = self.get_motor(idx)
+        var enabled = int(payload)
+        if (motor)
+            if (enabled) 
+                motor.enable()
+            else
+                motor.disable()
+            end
             tasmota.resp_cmnd_done()
         else
             tasmota.resp_cmnd_error()
@@ -89,12 +105,12 @@ class AsyncStepperMotorManager
     end
 end
 
-var manager = AsyncStepperMotorManager()
+var manager = AsyncMotorManager()
 
-tasmota.cmd("AddAsyncMotor {\"enable_pin\": 12, \"dir_pin\": 14, \"step_pin\": 27, \"endstop_home_pin\": 26 }")
-# tasmota.cmd("AddAsyncMotor {\"enable_pin\": 20, \"dir_pin\": 21, \"step_pin\": 22, \"endstop_home_pin\": 23 }")
-tasmota.cmd("SetMotorStepInterval1 30")
-tasmota.cmd("SetMotorHomingStepInterval1 500")
+# tasmota.cmd("AddAsyncMotor {\"enable_pin\": 12, \"dir_pin\": 14, \"step_pin\": 27, \"endstop_home_pin\": 26 }")
+# # tasmota.cmd("AddAsyncMotor {\"enable_pin\": 20, \"dir_pin\": 21, \"step_pin\": 22, \"endstop_home_pin\": 23 }")
+# tasmota.cmd("SetMotorStepInterval1 30")
+# tasmota.cmd("SetMotorHomingStepInterval1 500")
 
-tasmota.cmd("SetMotorStepInterval2 60")
-tasmota.cmd("SetMotorHomingStepInterval2 400")
+# tasmota.cmd("SetMotorStepInterval2 60")
+# tasmota.cmd("SetMotorHomingStepInterval2 400")
