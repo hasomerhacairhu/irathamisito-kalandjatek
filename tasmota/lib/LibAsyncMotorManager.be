@@ -21,6 +21,7 @@ class AsyncMotorManager
 
     def add_motor(enable_pin, dir_pin, step_pin, endstop_home_pin)
         # import AsyncStepperMotorDriver
+        log ("Motor has been added.",3);
         var motor = AsyncMotorDriver(enable_pin, dir_pin, step_pin, endstop_home_pin)
         self.motors.push(motor)
         return motor

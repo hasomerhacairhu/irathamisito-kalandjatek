@@ -62,12 +62,14 @@ class AsyncMotorDriver
     
     # Method to enable the motor
     def enable()
+        log("Enable motor", 3)
         gpio.digital_write(self.enable_pin, gpio.LOW) # LOW to enable the motor
         self.enabled = true
     end
     
     # Method to disable the motor
     def disable()
+        log("Disable motor", 3)
         gpio.digital_write(self.enable_pin, gpio.HIGH) # HIGH to disable the motor
         self.enabled = false
     end
@@ -143,8 +145,8 @@ class AsyncMotorDriver
 			
             # Toggle step pin
             gpio.digital_write(self.step_pin, gpio.HIGH)
-            #tasmota.delay(1) # Short pulse for the step signal
-            # log ("ms " + str(stepDelay) + "\tstepsAhead: " + str(stepsAhead) + "\t current step: " + str(self.current_step) + "\t target step: " + str(self.target_step))
+            tasmota.delay(1) # Short pulse for the step signal
+            log ("ms " + str(stepDelay) + "\tstepsAhead: " + str(stepsAhead) + "\t current step: " + str(self.current_step) + "\t target step: " + str(self.target_step),4)
             gpio.digital_write(self.step_pin, gpio.LOW)
 
             self.current_step += current_direction ? 1 : -1
