@@ -3,7 +3,7 @@ class AsyncMotorDriver
     var enabled, direction, target_step, current_step
     var step_interval, homing_step_interval
     var last_step_millis, this_step_millis, last_scheduler_millis
-    var is_homing
+    var is_homing, is_scheduler_running
 
     # Constructor takes GPIO pins for enable, direction, and step
     def init(enable_pin, dir_pin, step_pin, endstop_home_pin)
@@ -26,6 +26,7 @@ class AsyncMotorDriver
         self.set_direction(true) # true = CW, false = CCW
         self.target_step = 0
 		self.current_step = 0
+		self.is_scheduler_running = false
     end
 
     def set_step_interval_ms(ms)
@@ -79,7 +80,9 @@ class AsyncMotorDriver
     def stop()
         self.is_homing = false
         self.target_step = self.current_step
-        self._stop_scheduler()
+        if (self.is_scheduler_running)
+            self._stop_scheduler()
+        end
     end
     
     # Method to set the direction of the motor
@@ -99,7 +102,9 @@ class AsyncMotorDriver
         end
 
         self.target_step += steps
-		self._start_scheduler()     
+        if (!self.is_scheduler_running)
+		    self._start_scheduler() 
+        end    
     end
 	
 	def go_to_position(step)
@@ -108,10 +113,13 @@ class AsyncMotorDriver
 		end
 		
 		self.target_step = step
-		self._start_scheduler()        
+        if (!self.is_scheduler_running)
+		    self._start_scheduler() 
+        end         
 	end
 
     def _start_scheduler()
+        self.is_scheduler_running = true
         self.last_scheduler_millis = tasmota.millis()
         self.this_step_millis = self.last_scheduler_millis
         self.last_step_millis = self.last_scheduler_millis
@@ -120,6 +128,7 @@ class AsyncMotorDriver
     end
 
     def _stop_scheduler()
+        self.is_scheduler_running = false
         tasmota.remove_fast_loop(/-> self.scheduler())
     end
 
@@ -158,7 +167,9 @@ class AsyncMotorDriver
             end
             
         else
-            self._stop_scheduler()
+            if (self.is_scheduler_running)
+                self._stop_scheduler()
+            end
         end
         self.last_step_millis = self.this_step_millis
     end

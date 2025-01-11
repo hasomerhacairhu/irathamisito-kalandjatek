@@ -8,10 +8,10 @@ tasmota.cmd("SwitchMode0 16")
 
 var PIN_ROTARY_A = 0
 var PIN_ROTARY_B = 1
-var PIN_MUX_ADDR_1 = 12
-var PIN_MUX_ADDR_2 = 13
-var PIN_MUX_ADDR_3 = 14
-var PIN_MUX_ADDR_4 = 15
+var PIN_MUX_ADDR_0 = 15
+var PIN_MUX_ADDR_1 = 14
+var PIN_MUX_ADDR_2 = 12
+var PIN_MUX_ADDR_3 = 13
 var PIN_MUX_COM = 5
 
 var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
