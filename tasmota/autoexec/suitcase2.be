@@ -18,6 +18,6 @@ var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
 tasmota.add_driver(encoder)
 
 var mux = Multiplexer()
-mux.set_address_pins(PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3,PIN_MUX_ADDR_4)
+mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
 mux.set_common_analog_input_pin(PIN_MUX_COM)
 tasmota.add_driver(mux)
