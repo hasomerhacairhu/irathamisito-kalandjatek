@@ -4,7 +4,7 @@ class RotaryEncoder
     var a_pin, b_pin
     var fast_loop_closure
     var old_state
-    var on_tick_cb
+    # var on_tick_cb
     var knob_signal_window, knob_step_counter, old_knob_step_counter
     var topic
     
@@ -21,15 +21,17 @@ class RotaryEncoder
         self.knob_signal_window = [0,0,0,0]
         self.knob_step_counter = 0
         self.old_knob_step_counter = 0
-
-        self.topic = tasmota.cmd("Topic")["Topic"]
         
         tasmota.add_fast_loop(/-> self.tick()   )
     end
 
-    def set_on_tick_callback (cb)
-        self.on_tick_cb = cb
+    def set_topic(topic)
+        self.topic = topic
     end
+
+    # def set_on_tick_callback (cb)
+    #     self.on_tick_cb = cb
+    # end
 
     def every_second()
         if (self.old_knob_step_counter != self.knob_step_counter)
@@ -58,16 +60,16 @@ class RotaryEncoder
             #hanem csak a rising (1) es falling (2) edget egymas utan kovetkezik e a pufferben. Bonyolultabb muvelet,de hibaturobb.
             if (self.knob_signal_window == [1,0,2,3])
                 self.knob_step_counter+=1
-                if (type(self.on_tick_cb)== "function")
-                    self.on_tick_cb(self.CW, self.knob_step_counter)
-                end
+                # if (type(self.on_tick_cb)== "function")
+                #     self.on_tick_cb(self.CW, self.knob_step_counter)
+                # end
             end
             
             if (self.knob_signal_window == [2,0,1,3])
                 self.knob_step_counter-=1
-                if (type(self.on_tick_cb)== "function")
-                    self.on_tick_cb(self.CCW, self.knob_step_counter)
-                end
+                # if (type(self.on_tick_cb)== "function")
+                #     self.on_tick_cb(self.CCW, self.knob_step_counter)
+                # end
             end
             self.old_state = this_state
         end
