@@ -22,10 +22,7 @@ class Multiplexer
     end
 
     def set_address_pins(a0, a1, a2, a3)
-        # self.address_pins = [a0, a1, a2, a3]
-        # for i: 0 .. 3
-        #     gpio.pin_mode(self.address_pins[i], gpio.OUTPUT)
-        # end
+        import gpio
         gpio.pin_mode(a0, gpio.OUTPUT)
         gpio.pin_mode(a1, gpio.OUTPUT)
         gpio.pin_mode(a2, gpio.OUTPUT)
@@ -65,3 +62,16 @@ class Multiplexer
     end
 end
 
+
+
+var PIN_MUX_ADDR_0 = 15
+var PIN_MUX_ADDR_1 = 14
+var PIN_MUX_ADDR_2 = 12
+var PIN_MUX_ADDR_3 = 13
+var PIN_MUX_COM = 25
+
+
+
+var mux = Multiplexer()
+mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
+mux.set_common_analog_input_pin(PIN_MUX_COM)
