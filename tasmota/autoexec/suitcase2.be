@@ -18,6 +18,19 @@ var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
 tasmota.add_driver(encoder)
 
 var mux = Multiplexer()
+
+var topic = tasmota.cmd("Topic")["Topic"]
+
+var character_maps = {
+    "SUITCASE1_2": " BAKOSNDR#######",
+    "SUITCASE2_2": " BALOGHÉV#######",
+    "SUITCASE3_2": " KOVÁCSGYÖR#####",
+    "SUITCASE4_2": " RAPOSTIB#######",
+    "SUITCASE5_2": " MEGYRIJÓZSF####",
+}
 mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
 mux.set_common_analog_input_pin(PIN_MUX_COM)
+mux.set_topic(topic)
+mux.set_character_map(character_maps[topic])
+mux.set_tolerance(15)
 tasmota.add_driver(mux)
