@@ -7,6 +7,7 @@ class Multiplexer
     def init()
         self.values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.old_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        # self.is_dirty = false;
         self.address_pins = [-1,-1,-1,-1]
         self.tolerance = 0
         self.topic = tasmota.cmd("Topic")["Topic"]
@@ -22,11 +23,14 @@ class Multiplexer
     end
 
     def set_address_pins(a0, a1, a2, a3)
-        import gpio
-        gpio.pin_mode(a0, gpio.OUTPUT)
-        gpio.pin_mode(a1, gpio.OUTPUT)
-        gpio.pin_mode(a2, gpio.OUTPUT)
-        gpio.pin_mode(a3, gpio.OUTPUT)
+        self.address_pins = [a0, a1, a2, a3]
+        for i: 0 .. 3
+            gpio.pin_mode(self.address_pins[i], gpio.OUTPUT)
+        end
+        # gpio.pin_mode(a0, gpio.OUTPUT)
+        # gpio.pin_mode(a1, gpio.OUTPUT)
+        # gpio.pin_mode(a2, gpio.OUTPUT)
+        # gpio.pin_mode(a3, gpio.OUTPUT)
     end
 
     def set_tolerance(tolerance)
@@ -40,12 +44,11 @@ class Multiplexer
         end
     end
 
-    def every_second()
-        var is_dirty = false
+    def read()
         import json
         import math
-        import mqtt
         import string
+        var is_dirty = false;
         for address: 0 .. 15
             self.write_out_address(address)
             self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
@@ -53,14 +56,30 @@ class Multiplexer
                 is_dirty = true
             end
         end
-        if (is_dirty)
-            mqtt.publish("tele/" + self.topic +"/MUX", json.dump(self.values))
-        end
+        var return_values = [is_dirty, self.values]
+        print(self.values)
         for i: 0 .. 15
             self.old_values[i] = self.values[i]
         end
+        return return_values
+    end
+
+    def every_second()
+        import json
+        import mqtt
+        var mux = self.read()
+        var is_dirty = mux[0]
+        var values = mux[1]
+        print (is_dirty)
+        print (values)
+
+        if (is_dirty)
+            mqtt.publish("tele/" + self.topic +"/MUX", json.dump(self.values))
+        end
     end
 end
+
+
 
 
 
@@ -68,10 +87,11 @@ var PIN_MUX_ADDR_0 = 15
 var PIN_MUX_ADDR_1 = 14
 var PIN_MUX_ADDR_2 = 12
 var PIN_MUX_ADDR_3 = 13
-var PIN_MUX_COM = 25
+var PIN_MUX_COM = 33
 
 
 
 var mux = Multiplexer()
 mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
 mux.set_common_analog_input_pin(PIN_MUX_COM)
+mux.every_second()

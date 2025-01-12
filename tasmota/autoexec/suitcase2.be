@@ -12,7 +12,7 @@ var PIN_MUX_ADDR_0 = 15
 var PIN_MUX_ADDR_1 = 14
 var PIN_MUX_ADDR_2 = 12
 var PIN_MUX_ADDR_3 = 13
-var PIN_MUX_COM = 25
+var PIN_MUX_COM = 33
 
 var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
 tasmota.add_driver(encoder)
