@@ -2,15 +2,15 @@ class Multiplexer
     var values, old_values
     var address_pins, common_pin
     var tolerance
-    var topic
+    var topic, log_level
 
     def init()
         self.values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.old_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        self.is_dirty = false;
         self.address_pins = [-1,-1,-1,-1]
         self.tolerance = 0
         self.topic = tasmota.cmd("Topic")["Topic"]
+        self.log_level = tasmota.cmd("WebLog")["WebLog"]
 
     end
 
@@ -23,14 +23,10 @@ class Multiplexer
     end
 
     def set_address_pins(a0, a1, a2, a3)
-        # self.address_pins = [a0, a1, a2, a3]
-        # for i: 0 .. 3
-        #     gpio.pin_mode(self.address_pins[i], gpio.OUTPUT)
-        # end
-        gpio.pin_mode(a0, gpio.OUTPUT)
-        gpio.pin_mode(a1, gpio.OUTPUT)
-        gpio.pin_mode(a2, gpio.OUTPUT)
-        gpio.pin_mode(a3, gpio.OUTPUT)
+        self.address_pins = [a0, a1, a2, a3]
+        for i: 0 .. 3
+            gpio.pin_mode(self.address_pins[i], gpio.OUTPUT)
+        end
     end
 
     def set_tolerance(tolerance)
@@ -44,8 +40,11 @@ class Multiplexer
         end
     end
 
-    def read_mux()
-        self.is_dirty = false;
+    def read()
+        import json
+        import math
+        import string
+        var is_dirty = false;
         for address: 0 .. 15
             self.write_out_address(address)
             self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
@@ -53,30 +52,25 @@ class Multiplexer
                 is_dirty = true
             end
         end
-        var return_values = [self.is_dirty, self.values]
+        var return_values = [is_dirty, self.values]
         
-    end
-
-    def every_second()
-        var is_dirty = false
-        import json
-        import math
-        import mqtt
-        import string
-        # for address: 0 .. 15
-        #     self.write_out_address(address)
-        #     self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
-        #     if (math.abs(self.values[address] - self.old_values[address]) > self.tolerance)
-        #         is_dirty = true
-        #     end
-        # end
-        
-        if (is_dirty)
-            mqtt.publish("tele/" + self.topic +"/MUX", json.dump(self.values))
-        end
         for i: 0 .. 15
             self.old_values[i] = self.values[i]
         end
+        log(return_values, 4)
+        return return_values
+    end
+
+    def every_second()
+        import json
+        import mqtt
+        var mux = self.read()
+        var is_dirty = mux[0]
+        var values = mux[1]
+
+
+        if (is_dirty)
+            mqtt.publish("tele/" + self.topic +"/MUX", json.dump(self.values))
+        end
     end
 end
-

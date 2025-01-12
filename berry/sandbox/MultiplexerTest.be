@@ -2,15 +2,15 @@ class Multiplexer
     var values, old_values
     var address_pins, common_pin
     var tolerance
-    var topic
+    var topic, log_level
 
     def init()
         self.values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.old_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        # self.is_dirty = false;
         self.address_pins = [-1,-1,-1,-1]
         self.tolerance = 0
         self.topic = tasmota.cmd("Topic")["Topic"]
+        self.log_level = tasmota.cmd("WebLog")["WebLog"]
 
     end
 
@@ -27,10 +27,6 @@ class Multiplexer
         for i: 0 .. 3
             gpio.pin_mode(self.address_pins[i], gpio.OUTPUT)
         end
-        # gpio.pin_mode(a0, gpio.OUTPUT)
-        # gpio.pin_mode(a1, gpio.OUTPUT)
-        # gpio.pin_mode(a2, gpio.OUTPUT)
-        # gpio.pin_mode(a3, gpio.OUTPUT)
     end
 
     def set_tolerance(tolerance)
@@ -57,10 +53,11 @@ class Multiplexer
             end
         end
         var return_values = [is_dirty, self.values]
-        print(self.values)
+        
         for i: 0 .. 15
             self.old_values[i] = self.values[i]
         end
+        log(return_values, 4)
         return return_values
     end
 
@@ -70,8 +67,7 @@ class Multiplexer
         var mux = self.read()
         var is_dirty = mux[0]
         var values = mux[1]
-        print (is_dirty)
-        print (values)
+
 
         if (is_dirty)
             mqtt.publish("tele/" + self.topic +"/MUX", json.dump(self.values))
@@ -94,4 +90,4 @@ var PIN_MUX_COM = 33
 var mux = Multiplexer()
 mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
 mux.set_common_analog_input_pin(PIN_MUX_COM)
-mux.every_second()
+tasmota.add_driver(mux)
