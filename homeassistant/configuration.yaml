@@ -1,0 +1,26 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# python_script:
+
+recorder: 
+  exclude:
+    entities:
+      - sensor.suitcase3_2_analog_a1
+
+# Sajat resz innentol jon. nem tudom mik voltak ezek itt felette.
+
+mqtt:
+  sensor: !include_dir_merge_list sensors/
+# automation: !include_dir_merge_list automations/
+
+
+

@@ -6,8 +6,8 @@ tasmota.cmd("SwitchMode0 16")
 
 #A Tasmota konfiguracioban ne legyen beallitva a gyari rotary driver
 
-var PIN_ROTARY_A = 0
-var PIN_ROTARY_B = 1
+var PIN_ROTARY_A = 1
+var PIN_ROTARY_B = 0
 var PIN_MUX_ADDR_0 = 15
 var PIN_MUX_ADDR_1 = 14
 var PIN_MUX_ADDR_2 = 12
