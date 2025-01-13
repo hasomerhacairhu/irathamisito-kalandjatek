@@ -6,6 +6,7 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
@@ -21,6 +22,9 @@ recorder:
 mqtt:
   sensor: !include_dir_merge_list sensors/
 # automation: !include_dir_merge_list automations/
+
+# template:
+#   sensor: !include_dir_merge_list templates/
 
 
 

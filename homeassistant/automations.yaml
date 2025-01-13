@@ -1,0 +1,2403 @@
+- id: '1732541240286'
+  alias: Embassy Init
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.embassy_init
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 19a5491f6c0940e5fe9f00dd39ab568b
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 80c277de0786d59e629f80dffc41aeab
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 75166bd1264da7d371f8a4e75ca4d6b9
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 1bd3d079f966fa00219586b4c1dad254
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 5f57d6ae2753f70933abb5e68b592637
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 33b43ce4af98b127a2cd451874e070a1
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 980ea5c736ce5f3bd612a775972e53d0
+    domain: switch
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 4daf2670cc69bd55ee783eb201891877
+    domain: switch
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 5c480edad854c3086aeb42677885a1d5
+    domain: switch
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: e7ef1af74836817f0d145e2aba80d6ba
+    domain: switch
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 2991d58f699ef6eb71d9f753f75711bd
+    domain: switch
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 6e9138839a5be6d6678fc484ef7fccae
+    domain: switch
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+    domain: switch
+  - type: turn_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 0b226a48f7c59f4de7ac92efdeb1e7c3
+    domain: switch
+  - type: turn_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: a7dc94f2038885aa3fd197bc86d39bbb
+    domain: switch
+  - type: turn_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 44d3d66d3b33a267baee90a3583b2dd0
+    domain: switch
+  - type: turn_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 70fa1cb38d5a0bda43d988ca94fd7478
+    domain: switch
+  - type: turn_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: c18df3956ea7327d28fdbd337983e488
+    domain: switch
+  mode: single
+- id: '1734261637690'
+  alias: Suitcase1 Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: c90c2dbfea8c3ba81d5bcc6d10fe09bd
+    domain: switch
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 97d10089f6ab89ccee7d98b6dcb78184
+    domain: switch
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.suitcase1_new_name
+  mode: single
+- id: '1734261676159'
+  alias: Suitcase2 Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: b57d1a73b6b670a5481312cd2981b1c9
+    domain: switch
+  - type: turn_off
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: b57d1a73b6b670a5481312cd2981b1c9
+    domain: switch
+  - type: turn_off
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: b57d1a73b6b670a5481312cd2981b1c9
+    domain: switch
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.suitcase2_new_name
+  mode: single
+- id: '1734261695021'
+  alias: Suitcase3 Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+  - type: turn_off
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+  - type: turn_off
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.suitcase3_new_name
+  mode: single
+- id: '1734261714461'
+  alias: Suitcase4 Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+  - type: turn_off
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+  - type: turn_off
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.suitcase4_new_name
+  mode: single
+- id: '1734262060419'
+  alias: Radio Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: 52052a2afeb2d30104ec6d37be7106b4
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: ec15edde6143e90ee580b698b1b4f7f2
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: b4285e2d11699add0622acd5efa0c3af
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: defc4f6541eee593daa0abd4b2a465d1
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: 8c6d05c295bf9107cb4251e8fea3e036
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: bb20ee6bbfc1690ff47a8cd046a13eb0
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: 0fa5df3a1a74491e92e674db25da471b
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: e48981c34886205cfa54f1e299ce4a68
+    domain: switch
+  - type: turn_off
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: 645dc6a53ed5f490e2f4542af72957ff
+    domain: switch
+  mode: single
+- id: '1734262570375'
+  alias: Embassy hebrew letter fail animation
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - parallel:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5c480edad854c3086aeb42677885a1d5
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: e7ef1af74836817f0d145e2aba80d6ba
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 2991d58f699ef6eb71d9f753f75711bd
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 6e9138839a5be6d6678fc484ef7fccae
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+      domain: switch
+  - parallel:
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - parallel:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - parallel:
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - parallel:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - parallel:
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+  mode: single
+- id: '1734262631822'
+  alias: Suitcase1 hebrew button
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: 6a40871435d552e6165cc08ec8314969
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - if:
+    - condition: and
+      conditions:
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 1bd3d079f966fa00219586b4c1dad254
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5f57d6ae2753f70933abb5e68b592637
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 33b43ce4af98b127a2cd451874e070a1
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 980ea5c736ce5f3bd612a775972e53d0
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 4daf2670cc69bd55ee783eb201891877
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5c480edad854c3086aeb42677885a1d5
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: e7ef1af74836817f0d145e2aba80d6ba
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 2991d58f699ef6eb71d9f753f75711bd
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 6e9138839a5be6d6678fc484ef7fccae
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+        domain: switch
+    then:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 1bd3d079f966fa00219586b4c1dad254
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5c480edad854c3086aeb42677885a1d5
+      domain: switch
+    else:
+    - action: automation.trigger
+      metadata: {}
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.embassy_hebrew_letter_fail_animation
+  mode: single
+- id: '1734262728346'
+  alias: Suitcase2 hebrew button
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: 9e52444151b00b6a85061770fab94876
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - if:
+    - condition: and
+      conditions:
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 1bd3d079f966fa00219586b4c1dad254
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5f57d6ae2753f70933abb5e68b592637
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 33b43ce4af98b127a2cd451874e070a1
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 980ea5c736ce5f3bd612a775972e53d0
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 4daf2670cc69bd55ee783eb201891877
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5c480edad854c3086aeb42677885a1d5
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: e7ef1af74836817f0d145e2aba80d6ba
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 2991d58f699ef6eb71d9f753f75711bd
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 6e9138839a5be6d6678fc484ef7fccae
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+        domain: switch
+    then:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 5f57d6ae2753f70933abb5e68b592637
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: e7ef1af74836817f0d145e2aba80d6ba
+      domain: switch
+    else:
+    - action: automation.trigger
+      metadata: {}
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.embassy_hebrew_letter_fail_animation
+  mode: single
+- id: '1734262988325'
+  alias: Suitcase3 hebrew button
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 2917e86d9944e933af51e72255a76a58
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - if:
+    - condition: and
+      conditions:
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 1bd3d079f966fa00219586b4c1dad254
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5f57d6ae2753f70933abb5e68b592637
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 33b43ce4af98b127a2cd451874e070a1
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 980ea5c736ce5f3bd612a775972e53d0
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 4daf2670cc69bd55ee783eb201891877
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5c480edad854c3086aeb42677885a1d5
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: e7ef1af74836817f0d145e2aba80d6ba
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 2991d58f699ef6eb71d9f753f75711bd
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 6e9138839a5be6d6678fc484ef7fccae
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+        domain: switch
+    then:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 33b43ce4af98b127a2cd451874e070a1
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 2991d58f699ef6eb71d9f753f75711bd
+      domain: switch
+    else:
+    - action: automation.trigger
+      metadata: {}
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.embassy_hebrew_letter_fail_animation
+  mode: single
+- id: '1734271334763'
+  alias: Suitcase4 hebrew button
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 1dedf19d2f6eb2f33608757512b8e821
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - if:
+    - condition: and
+      conditions:
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 1bd3d079f966fa00219586b4c1dad254
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5f57d6ae2753f70933abb5e68b592637
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 33b43ce4af98b127a2cd451874e070a1
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 980ea5c736ce5f3bd612a775972e53d0
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 4daf2670cc69bd55ee783eb201891877
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5c480edad854c3086aeb42677885a1d5
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: e7ef1af74836817f0d145e2aba80d6ba
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 2991d58f699ef6eb71d9f753f75711bd
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 6e9138839a5be6d6678fc484ef7fccae
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+        domain: switch
+    then:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 980ea5c736ce5f3bd612a775972e53d0
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 6e9138839a5be6d6678fc484ef7fccae
+      domain: switch
+    else:
+    - action: automation.trigger
+      metadata: {}
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.embassy_hebrew_letter_fail_animation
+  mode: single
+- id: '1734271420689'
+  alias: Suitcase5 hebrew button
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 99b6de8780ea0d4805a3297084f114d2
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - if:
+    - condition: and
+      conditions:
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 1bd3d079f966fa00219586b4c1dad254
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5f57d6ae2753f70933abb5e68b592637
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 33b43ce4af98b127a2cd451874e070a1
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 980ea5c736ce5f3bd612a775972e53d0
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 4daf2670cc69bd55ee783eb201891877
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 5c480edad854c3086aeb42677885a1d5
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: e7ef1af74836817f0d145e2aba80d6ba
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 2991d58f699ef6eb71d9f753f75711bd
+        domain: switch
+      - condition: device
+        type: is_on
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 6e9138839a5be6d6678fc484ef7fccae
+        domain: switch
+      - condition: device
+        type: is_off
+        device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+        entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+        domain: switch
+    then:
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 4daf2670cc69bd55ee783eb201891877
+      domain: switch
+    - type: turn_on
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 0c80df694e8d3a8b53d6924a713e3a66
+      domain: switch
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+    - type: turn_off
+      device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+      entity_id: 19a5491f6c0940e5fe9f00dd39ab568b
+      domain: switch
+    else:
+    - action: automation.trigger
+      metadata: {}
+      data:
+        skip_condition: true
+      target:
+        entity_id: automation.embassy_hebrew_letter_fail_animation
+  mode: single
+- id: '1734271783002'
+  alias: Embassy weapon
+  description: Ha bearkták a fegyvereket kinyílik az old passport door.
+  triggers:
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 96b2721d5137176ebe1f69ad63297d38
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: e59faa5c01d30f4b4c7b05353785f4e4
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 12993f5d48054e773520b9f9244642f8
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 9ab6f2688e732db754a601e2bbf727b8
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 23648a104a3d5abae7966abee4700635
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 96b2721d5137176ebe1f69ad63297d38
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: e59faa5c01d30f4b4c7b05353785f4e4
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 12993f5d48054e773520b9f9244642f8
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 9ab6f2688e732db754a601e2bbf727b8
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 23648a104a3d5abae7966abee4700635
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 80c277de0786d59e629f80dffc41aeab
+    domain: switch
+  mode: single
+- id: '1734271991345'
+  alias: Embassy old passport door close
+  description: Ha minden irat bentvan akkor visszakapcsol a mágnes.
+  triggers:
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 5c13b7e1f6ee8dbfe4fa6efe3c2b0e7d
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 3fb5ab9bb3f6037bc2cfa419063b757c
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 941b7024185e3bbe3fd884f812edeba1
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 86e80c834baf6b16acea0b4fff8a33b8
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 8a26e0a2053dc6cbc4da6bee4ae55b4a
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 5c13b7e1f6ee8dbfe4fa6efe3c2b0e7d
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 3fb5ab9bb3f6037bc2cfa419063b757c
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 941b7024185e3bbe3fd884f812edeba1
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 86e80c834baf6b16acea0b4fff8a33b8
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 39644b5e166347bd63f4e854ba190d66
+      entity_id: 8a26e0a2053dc6cbc4da6bee4ae55b4a
+      domain: binary_sensor
+  actions:
+  - type: turn_on
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 80c277de0786d59e629f80dffc41aeab
+    domain: switch
+  mode: single
+- id: '1734272508758'
+  alias: Embassy old passport door reset
+  description: Ha bármelyik iratot kiveszik akkor kikapcsol az ajtó
+  triggers:
+  - type: turned_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 5c13b7e1f6ee8dbfe4fa6efe3c2b0e7d
+    domain: binary_sensor
+    trigger: device
+  - type: turned_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 3fb5ab9bb3f6037bc2cfa419063b757c
+    domain: binary_sensor
+    trigger: device
+  - type: turned_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 941b7024185e3bbe3fd884f812edeba1
+    domain: binary_sensor
+    trigger: device
+  - type: turned_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 86e80c834baf6b16acea0b4fff8a33b8
+    domain: binary_sensor
+    trigger: device
+  - type: turned_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 8a26e0a2053dc6cbc4da6bee4ae55b4a
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 80c277de0786d59e629f80dffc41aeab
+    domain: switch
+  mode: single
+- id: '1734272953731'
+  alias: Suitcase1 compass on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: beceb680f58205a9639c1838157b3e3f
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 97d10089f6ab89ccee7d98b6dcb78184
+    domain: switch
+  - type: turn_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+  mode: single
+- id: '1734272994725'
+  alias: Suitcase1 compass off
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: beceb680f58205a9639c1838157b3e3f
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 97d10089f6ab89ccee7d98b6dcb78184
+    domain: switch
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+  mode: single
+- id: '1734273033038'
+  alias: Suitcase2 compass on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: fcc5b56461675e391cf215fe6d54be38
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: 17f5ffb138d7021125c20f6f7cdcc750
+    domain: switch
+  - type: turn_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+  mode: single
+- id: '1734273072534'
+  alias: Suitcase2 compass off
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: fcc5b56461675e391cf215fe6d54be38
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: 17f5ffb138d7021125c20f6f7cdcc750
+    domain: switch
+  - type: turn_off
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+  mode: single
+- id: '1734273115571'
+  alias: Suitcase3 compass on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: c61a585754a01122ecad1260e1a43ef3
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: ac88647854f7e2cff577bf86708b65d7
+    domain: switch
+  - type: turn_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+  mode: single
+- id: '1734273143156'
+  alias: Suitcase3 compass off
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: c61a585754a01122ecad1260e1a43ef3
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: ac88647854f7e2cff577bf86708b65d7
+    domain: switch
+  - type: turn_off
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+  mode: single
+- id: '1734273182726'
+  alias: Suitcase4 compass on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 1b8ed2bcdd2eb8f773012d1451119c87
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 2b7f8c13a082c6cc9a7d7aab84d80976
+    domain: switch
+  - type: turn_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+  mode: single
+- id: '1734273204666'
+  alias: Suitcase4 compass off
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 1b8ed2bcdd2eb8f773012d1451119c87
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 2b7f8c13a082c6cc9a7d7aab84d80976
+    domain: switch
+  - type: turn_off
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+  mode: single
+- id: '1734274265268'
+  alias: Suitcase1 date
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: 10ff599b61f50c45b4e3c3c83fe9fb97
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: eca5cc61113b4f3f47ccce56c0ec8f3b
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: eca5cc61113b4f3f47ccce56c0ec8f3b
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: e0e0c53fc2d4e3fd6f31bb816d9e6ef1
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: 336ddaa505cb61384f61ff23008428ec
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: ffb3531e869415895eaa95bc53121dcf
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: 6796df1deb806bae7ea87c249d231254
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: e416f153102be08626b62cc0d8b1bdba
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: 10ff599b61f50c45b4e3c3c83fe9fb97
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: eca5cc61113b4f3f47ccce56c0ec8f3b
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: dc54aecdf14b05319be6219eba5fc4aa
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: e0e0c53fc2d4e3fd6f31bb816d9e6ef1
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: 336ddaa505cb61384f61ff23008428ec
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: ffb3531e869415895eaa95bc53121dcf
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: 6796df1deb806bae7ea87c249d231254
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: e416f153102be08626b62cc0d8b1bdba
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 0b226a48f7c59f4de7ac92efdeb1e7c3
+    domain: switch
+  mode: single
+- id: '1734274550948'
+  alias: Suitcase3 date
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 42fd1b8fe20bbd36a8ac19753a2a5fd5
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: c442ffca24e8ae3579677d9a3e6494de
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 949a165d609532075ef7ea8fd1a77115
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 888bd2d2ec9bdadc14efb3d340e0a14a
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 0648058bd906a4685b2f58c1e5673fdd
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: f7f5d78ff16d2d3561eca36a8d7a3c0d
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: c2567cf9969a1bd1b4468695d68eb886
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 15e9a3ff0a5e3b1f451d23e1e64fa745
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 42fd1b8fe20bbd36a8ac19753a2a5fd5
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: c442ffca24e8ae3579677d9a3e6494de
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 949a165d609532075ef7ea8fd1a77115
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 888bd2d2ec9bdadc14efb3d340e0a14a
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 0648058bd906a4685b2f58c1e5673fdd
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: f7f5d78ff16d2d3561eca36a8d7a3c0d
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: c2567cf9969a1bd1b4468695d68eb886
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 15e9a3ff0a5e3b1f451d23e1e64fa745
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 44d3d66d3b33a267baee90a3583b2dd0
+    domain: switch
+  mode: single
+- id: '1734275064049'
+  alias: Suitcase2 date
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: c7146847926c66d7a69e65ece9312ed8
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: a59a2792b1606c68a771e95e1a9151e7
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: cc44f0051c50ab81519e698d12d37b65
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: 85ab7cf1f48380bb1942acdd019869aa
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: caf25e28b1c7c7169dd17a7192f0c272
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: 6569061b606aafcb0f642fdfa6142f0b
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: 10870024c9ca58c2a437726a8b70e49b
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: 06cfd098db94f4396c02b394ec0c6c02
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: c7146847926c66d7a69e65ece9312ed8
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: a59a2792b1606c68a771e95e1a9151e7
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: cc44f0051c50ab81519e698d12d37b65
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: 85ab7cf1f48380bb1942acdd019869aa
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: caf25e28b1c7c7169dd17a7192f0c272
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: 6569061b606aafcb0f642fdfa6142f0b
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: 10870024c9ca58c2a437726a8b70e49b
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: 06cfd098db94f4396c02b394ec0c6c02
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: a7dc94f2038885aa3fd197bc86d39bbb
+    domain: switch
+  mode: single
+- id: '1734275500066'
+  alias: Suitcase4 date
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 18454480d5f15e1fbee47d7e8444fcc3
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 6399dbd8cba01649a0c6cd4012508918
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: f1b6eca2216ad72a17f40c8a5d8f07bb
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 0bc2829e81f38aaa1cb3b25a87992793
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 77754f9cc7cf8a19d5c6d76ce5779f01
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 758c092285f9568e1a4ae8523d8f06c3
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 027428e6a19305991ce3c425d96a694a
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: 023933fcd3a6817223c9d5db08f663bb
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 18454480d5f15e1fbee47d7e8444fcc3
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 6399dbd8cba01649a0c6cd4012508918
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: f1b6eca2216ad72a17f40c8a5d8f07bb
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 0bc2829e81f38aaa1cb3b25a87992793
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 77754f9cc7cf8a19d5c6d76ce5779f01
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 758c092285f9568e1a4ae8523d8f06c3
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 027428e6a19305991ce3c425d96a694a
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 023933fcd3a6817223c9d5db08f663bb
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: 70fa1cb38d5a0bda43d988ca94fd7478
+    domain: switch
+  mode: single
+- id: '1734275682050'
+  alias: Suitcase5 date
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 763b9bd95bf30aa53e51dfb7b31e9d4a
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 5c0c7fa90567bffb432fcc45c08b3c8f
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: d3e2ce8ee5cc4cff8a530b4a4b73dc4b
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 802deb5574f94b6a75ec475bccc4a459
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 189c222c37fbbd6d3490d6ad5d1036b9
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 86ad66b4521d57da5d212e6f6bc243b3
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: c240178e18ca5df7deaca97dcf429437
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: ff21617da8ac59b3bf66c01c112a26a6
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: 763b9bd95bf30aa53e51dfb7b31e9d4a
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: 5c0c7fa90567bffb432fcc45c08b3c8f
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: d3e2ce8ee5cc4cff8a530b4a4b73dc4b
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: 802deb5574f94b6a75ec475bccc4a459
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: 189c222c37fbbd6d3490d6ad5d1036b9
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: 86ad66b4521d57da5d212e6f6bc243b3
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: c240178e18ca5df7deaca97dcf429437
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: ff21617da8ac59b3bf66c01c112a26a6
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: c18df3956ea7327d28fdbd337983e488
+    domain: switch
+  mode: single
+- id: '1734277545483'
+  alias: Suitcase1 frequency led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3d3bf218bc2aa0679b1ae95de61c8917
+    entity_id: f20c96e52c478c2e569b512060a4d804
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: c90c2dbfea8c3ba81d5bcc6d10fe09bd
+    domain: switch
+  mode: single
+- id: '1734277583414'
+  alias: Suitcase2 frequency led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3d3bf218bc2aa0679b1ae95de61c8917
+    entity_id: 7adc5b2bd7fb5661d2e0bc6bb1401aa4
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: a78eee6b0da4ca064905d3844d8921d4
+    domain: switch
+  mode: single
+- id: '1734277606891'
+  alias: Suitcase3 frequency led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3d3bf218bc2aa0679b1ae95de61c8917
+    entity_id: d394ddd79daeeef23e4ce8430241e23d
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 5f2970c6e624ea07e5ea418513ffb124
+    domain: switch
+  mode: single
+- id: '1734277628156'
+  alias: Suitcase4 frequency led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3d3bf218bc2aa0679b1ae95de61c8917
+    entity_id: 9ad6294b46e67f7217ea925626e21242
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 33e195b84fb6bb3c02d81c3c9e4346b0
+    domain: switch
+  mode: single
+- id: '1734277944676'
+  alias: Suitcase name unlock, new passport
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.suitcase1_new_name
+    from: 'off'
+    to: 'on'
+  - trigger: state
+    entity_id:
+    - input_boolean.suitcase2_new_name
+    from: 'off'
+    to: 'on'
+  - trigger: state
+    entity_id:
+    - input_boolean.suitcase3_new_name
+    from: 'off'
+    to: 'on'
+  - trigger: state
+    entity_id:
+    - input_boolean.suitcase4_new_name
+    from: 'off'
+    to: 'on'
+  - trigger: state
+    entity_id:
+    - input_boolean.suitcase5_new_name
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.suitcase1_new_name
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.suitcase2_new_name
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.suitcase3_new_name
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.suitcase4_new_name
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.suitcase5_new_name
+      state: 'on'
+  actions:
+  - type: turn_off
+    device_id: d5f052d7c4cc97f596d1cc1db1e6d1ba
+    entity_id: 75166bd1264da7d371f8a4e75ca4d6b9
+    domain: switch
+  mode: single
+- id: '1734278276223'
+  alias: Suitcase close, game end
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: a592250e58babfd896d6ce2fd4875367
+    entity_id: 006c7dd6f46abbd708cbbfc7fc8986da
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 849957fa368e9b267866c6cefe1f6d38
+    entity_id: fa117db5175cf59071f88553c4e26113
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: ce051b04dc110cee92f5c2d8670dce90
+    entity_id: 6a9db75ed8512b6d38b6e7cd10a192ae
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: fea57856a0dc27d0cf56be35386b912d
+    entity_id: f8aec4fd05d52fc361ebb68414826c5f
+    domain: binary_sensor
+    trigger: device
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: ccbd09964460fbadce205ddf0bdef312
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: 006c7dd6f46abbd708cbbfc7fc8986da
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: fa117db5175cf59071f88553c4e26113
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 6a9db75ed8512b6d38b6e7cd10a192ae
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: f8aec4fd05d52fc361ebb68414826c5f
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: ccbd09964460fbadce205ddf0bdef312
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: a592250e58babfd896d6ce2fd4875367
+      entity_id: 79d839b0f5314f928b1ea32dd2950bf2
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 849957fa368e9b267866c6cefe1f6d38
+      entity_id: 7eae989a31210e0a5ed8cf9f4a8b018a
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: ce051b04dc110cee92f5c2d8670dce90
+      entity_id: 3c7031a799ab75341869dddbc14ce926
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: fea57856a0dc27d0cf56be35386b912d
+      entity_id: 6a86e130307fc8ff6b276725dcc7f2b0
+      domain: binary_sensor
+    - type: is_on
+      condition: device
+      device_id: 50472d7c039428d0895f7cdfbd7dcf51
+      entity_id: e1bbbf1655f9c41d13e10fee3b84a3bc
+      domain: binary_sensor
+  actions:
+  - type: turn_off
+    device_id: 9c4903a0cefc93738b41e9cfe3a90c0e
+    entity_id: 6a7de53f8f04dcde28dc84eb3c01b0d7
+    domain: switch
+  - type: turn_on
+    device_id: 9c4903a0cefc93738b41e9cfe3a90c0e
+    entity_id: ed519b495fb79ac768bfa02f155b44df
+    domain: switch
+  mode: single
+- id: '1734358846838'
+  alias: All automations on
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.automation
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: automation.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - automation.embassy_hebrew_letter_fail_animation
+      - automation.embassy_init
+      - automation.embassy_old_passport_door_turn_off
+      - automation.radio_frequency_done
+      - automation.embassy_weapon
+      - automation.radio_init
+      - automation.suitcase_close_game_end
+      - automation.radio_window_led_on
+      - automation.suitcase1_compass_off
+      - automation.suitcase1_compass_on
+      - automation.suitcase1_date
+      - automation.suitcase_name_unlock_new_passport
+      - automation.suitcase1_frequency_led_on
+      - automation.embassy_old_passport_door_closed_todo
+      - automation.suitcase1_init
+      - automation.suitcase2_date
+      - automation.suitcase2_frequency_led_on
+      - automation.suitcase2_compass_off
+      - automation.suitcase2_hebrew_button
+      - automation.suitcase1_hebrew_button
+      - automation.suitcase2_init
+      - automation.suitcase2_compass_on
+      - automation.suitcase3_date
+      - automation.suitcase3_compass_on
+      - automation.suitcase3_hebrew_button
+      - automation.suitcase3_frequency_led_on
+      - automation.suitcase3_compass_off
+      - automation.suitcase4_compass_off
+      - automation.suitcase4_date
+      - automation.suitcase4_frequency_led_on
+      - automation.suitcase4_hebrew_button
+      - automation.suitcase4_compass_on
+      - automation.suitcase4_init
+      - automation.suitcase5_compass_off
+      - automation.suitcase5_date
+      - automation.suitcase5_compass_on
+      - automation.suitcase5_frequency_led_on
+      - automation.suitcase5_hebrew_button
+      - automation.embassy_old_passport_door_close
+      - automation.suitcase3_init
+      - automation.suitcase5_init
+  mode: single
+- id: '1734358873917'
+  alias: All automations off
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.automation
+    from: 'on'
+    to: 'off'
+  conditions: []
+  actions:
+  - action: automation.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - automation.embassy_hebrew_letter_fail_animation
+      - automation.embassy_init
+      - automation.embassy_old_passport_door_turn_off
+      - automation.radio_frequency_done
+      - automation.embassy_weapon
+      - automation.radio_init
+      - automation.suitcase_close_game_end
+      - automation.radio_window_led_on
+      - automation.suitcase1_compass_off
+      - automation.suitcase1_compass_on
+      - automation.suitcase1_date
+      - automation.suitcase_name_unlock_new_passport
+      - automation.suitcase1_frequency_led_on
+      - automation.embassy_old_passport_door_closed_todo
+      - automation.suitcase1_init
+      - automation.suitcase2_date
+      - automation.suitcase2_frequency_led_on
+      - automation.suitcase2_compass_off
+      - automation.suitcase2_hebrew_button
+      - automation.suitcase1_hebrew_button
+      - automation.suitcase2_init
+      - automation.suitcase2_compass_on
+      - automation.suitcase3_date
+      - automation.suitcase3_compass_on
+      - automation.suitcase3_hebrew_button
+      - automation.suitcase3_frequency_led_on
+      - automation.suitcase3_compass_off
+      - automation.suitcase4_compass_off
+      - automation.suitcase4_date
+      - automation.suitcase4_frequency_led_on
+      - automation.suitcase4_hebrew_button
+      - automation.suitcase4_compass_on
+      - automation.suitcase4_init
+      - automation.suitcase5_compass_off
+      - automation.suitcase5_date
+      - automation.suitcase5_compass_on
+      - automation.suitcase5_frequency_led_on
+      - automation.suitcase5_hebrew_button
+      - automation.embassy_old_passport_door_close
+      - automation.suitcase3_init
+      - automation.suitcase5_init
+  mode: single
+- id: '1734359228951'
+  alias: Start time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_start
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      entity_id: timer.game_timer
+      state: paused
+    then:
+    - action: timer.start
+      metadata: {}
+      data: {}
+      target:
+        entity_id: timer.game_timer
+  - if:
+    - condition: state
+      entity_id: timer.game_timer
+      state: idle
+    then:
+    - action: timer.start
+      metadata: {}
+      data:
+        duration: '{{ states(''counter.countown_base'') | int * 60 }}'
+      target:
+        entity_id: timer.game_timer
+  mode: single
+- id: '1734359320518'
+  alias: Pause time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_pause
+  conditions: []
+  actions:
+  - action: timer.pause
+    metadata: {}
+    data: {}
+    target:
+      entity_id: timer.game_timer
+  mode: single
+- id: '1734361033473'
+  alias: Reset time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_reset
+  conditions: []
+  actions:
+  - action: timer.cancel
+    metadata: {}
+    data: {}
+    target:
+      entity_id: timer.game_timer
+  - action: counter.reset
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.countown_base
+  - action: timer.reload
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1734361088075'
+  alias: +1 minute time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_1_minute
+  conditions: []
+  actions:
+  - action: counter.increment
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.countown_base
+  mode: single
+- id: '1734361142614'
+  alias: -1 minute time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_1_minute_2
+  conditions: []
+  actions:
+  - action: counter.decrement
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.countown_base
+  mode: single
+- id: '1734361179860'
+  alias: +5 minute time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_5_minutes
+  conditions: []
+  actions:
+  - repeat:
+      count: 5
+      sequence:
+      - action: counter.increment
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.countown_base
+  mode: single
+- id: '1734361228448'
+  alias: -5 minute time
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.time_5_minutes_2
+  conditions: []
+  actions:
+  - repeat:
+      count: 5
+      sequence:
+      - action: counter.decrement
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.countown_base
+  mode: single
+- id: '1736712545262'
+  alias: Suitcase5 Init
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+  - type: turn_off
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+  - type: turn_off
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.suitcase5_new_name
+  mode: single
+- id: '1736712598281'
+  alias: Suitcase5 frequency led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3d3bf218bc2aa0679b1ae95de61c8917
+    entity_id: adca1f48702ce10fc33a932083a1f393
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: a3a0c4eb605a4a206b1df393e30cf290
+    domain: switch
+  mode: single
+- id: '1736712650446'
+  alias: Suitcase5 compass on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 50973d9855ab14ffc9cd5e3f062a3364
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 478523ae4a281d899548d2a2d09bcc75
+    domain: switch
+  - type: turn_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+  mode: single
+- id: '1736712676586'
+  alias: Suitcase5 compass off
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: 50472d7c039428d0895f7cdfbd7dcf51
+    entity_id: 50973d9855ab14ffc9cd5e3f062a3364
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 478523ae4a281d899548d2a2d09bcc75
+    domain: switch
+  - type: turn_off
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+  mode: single
+- id: '1736712719610'
+  alias: Radio window led on
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 161527428201a0000c08e28dc7bb1d94
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: b57d1a73b6b670a5481312cd2981b1c9
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 39dff4fa56ee284d48507578ef39d63f
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 292628e67bed1ffe6be65c099b907288
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 78d366ce81acb8240f560369572a0810
+    domain: switch
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_on
+      device_id: 2542b3cbed56788c109b195281bf19d7
+      entity_id: 161527428201a0000c08e28dc7bb1d94
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: 07bd91c2cfa87867d1c012825de2df50
+      entity_id: b57d1a73b6b670a5481312cd2981b1c9
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: ccb3fbd515b9249b9095b05b12721944
+      entity_id: 39dff4fa56ee284d48507578ef39d63f
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+      entity_id: 292628e67bed1ffe6be65c099b907288
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: b2e70d6a3869d602b81ca4e68fa43c02
+      entity_id: 78d366ce81acb8240f560369572a0810
+      domain: switch
+  actions:
+  - type: turn_on
+    device_id: ea72f6571ff8892e21e301d96ac9ecc6
+    entity_id: 52052a2afeb2d30104ec6d37be7106b4
+    domain: switch
+  mode: single
+- id: '1736712794018'
+  alias: Radio frequency unlock TODO
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: c90c2dbfea8c3ba81d5bcc6d10fe09bd
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: a78eee6b0da4ca064905d3844d8921d4
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: 5f2970c6e624ea07e5ea418513ffb124
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 33e195b84fb6bb3c02d81c3c9e4346b0
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: a3a0c4eb605a4a206b1df393e30cf290
+    domain: switch
+    trigger: device
+  conditions:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_on
+      device_id: 2542b3cbed56788c109b195281bf19d7
+      entity_id: c90c2dbfea8c3ba81d5bcc6d10fe09bd
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: 07bd91c2cfa87867d1c012825de2df50
+      entity_id: a78eee6b0da4ca064905d3844d8921d4
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: ccb3fbd515b9249b9095b05b12721944
+      entity_id: 5f2970c6e624ea07e5ea418513ffb124
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+      entity_id: 33e195b84fb6bb3c02d81c3c9e4346b0
+      domain: switch
+    - condition: device
+      type: is_on
+      device_id: b2e70d6a3869d602b81ca4e68fa43c02
+      entity_id: a3a0c4eb605a4a206b1df393e30cf290
+      domain: switch
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: TODO
+  mode: single
+- id: '1736712825854'
+  alias: Embassy old passport door closed TODO
+  description: Ha berakták a régi iratokat és becsukták az ajtót, a rádióból megszólal
+    egy három számos morzejel.
+  triggers:
+  - type: turned_on
+    device_id: 39644b5e166347bd63f4e854ba190d66
+    entity_id: bb75be33244a4c3ec8fc3477da6d0860
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: TODO
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - type: turn_on
+    device_id: 9c4903a0cefc93738b41e9cfe3a90c0e
+    entity_id: 6a7de53f8f04dcde28dc84eb3c01b0d7
+    domain: switch
+  - type: turn_on
+    device_id: 2542b3cbed56788c109b195281bf19d7
+    entity_id: 97d10089f6ab89ccee7d98b6dcb78184
+    domain: switch
+  - type: turn_on
+    device_id: 07bd91c2cfa87867d1c012825de2df50
+    entity_id: 17f5ffb138d7021125c20f6f7cdcc750
+    domain: switch
+  - type: turn_on
+    device_id: ccb3fbd515b9249b9095b05b12721944
+    entity_id: ac88647854f7e2cff577bf86708b65d7
+    domain: switch
+  - type: turn_on
+    device_id: 8bdb22a07562aebd1cf3e48f5dd12fa7
+    entity_id: 2b7f8c13a082c6cc9a7d7aab84d80976
+    domain: switch
+  - type: turn_on
+    device_id: b2e70d6a3869d602b81ca4e68fa43c02
+    entity_id: 478523ae4a281d899548d2a2d09bcc75
+    domain: switch
+  mode: single
+- id: '1736793857564'
+  alias: Suitcase1 say number
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.suitcase1_say_number
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: cmnd/SUITCASE1_1/I2SSay
+      payload: Hello 1
+  mode: single
+- id: '1736794549543'
+  alias: Suitcase2 say number
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.suitcase2_say_number
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: cmnd/SUITCASE2_1/I2SSay
+      payload: Hello 2
+  mode: single
+- id: '1736794635993'
+  alias: Suitcase3 say number
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.suitcase3_say_number
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: cmnd/SUITCASE3_1/I2SSay
+      payload: Hello 3
+  mode: single
+- id: '1736794672839'
+  alias: Suitcase4 say number
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.suitcase4_say_number
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: cmnd/SUITCASE4_1/I2SSay
+      payload: Hello 4
+  mode: single
+- id: '1736794697493'
+  alias: Suitcase5 say number
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.suitcase5_say_number
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: 0
+      retain: false
+      topic: cmnd/SUITCASE5_1/I2SSay
+      payload: Hello 5
+  mode: single
