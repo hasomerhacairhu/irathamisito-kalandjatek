@@ -1,3 +1,6 @@
+    tasmota.cmd("SetOption114 1")
+    tasmota.cmd("SwitchMode0 16")
+    
     #motor endstop
 
     # UART logot ki kell kapcsolni, mert motor vezerjel megy rajta
