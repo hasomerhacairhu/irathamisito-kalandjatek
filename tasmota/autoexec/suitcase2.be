@@ -24,11 +24,11 @@ var mux = Multiplexer()
 
 
 var character_maps = {
-    "SUITCASE1_2": "_BAKOSNDR#######",
-    "SUITCASE2_2": "_BALOGHÉV#######",
-    "SUITCASE3_2": "_KOVÁCSGYÖR#####",
-    "SUITCASE4_2": "_RAPOSTIB#######",
-    "SUITCASE5_2": "_MEGYRIJÓZSF####",
+    "SUITCASE1_2": "_MEGYRIJÓZSF####",
+    "SUITCASE2_2": "_KOVÁCSGYÖR#####",
+    "SUITCASE3_2": "_RAPOSTIB#######",
+    "SUITCASE4_2": "_BAKOSNDR#######",
+    "SUITCASE5_2": "_BALOGHÉV#######", 
 }
 mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
 mux.set_common_analog_input_pin(PIN_MUX_COM)
