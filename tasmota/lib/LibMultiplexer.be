@@ -87,7 +87,7 @@ class Multiplexer
         import string
         var is_dirty = false;
         var output_string = ""
-        for address: 0 .. 15
+        for address: 0 .. 14
             self.write_out_address(address)
             self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
             self.mapped_values[address] = self.map_raw_value(self.values[address])
