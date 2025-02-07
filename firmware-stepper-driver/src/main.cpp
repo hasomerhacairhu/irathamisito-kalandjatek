@@ -8,11 +8,12 @@
 #define TXD2 17
 HardwareSerial CommandSerial(1);
 
-// Constants & Pin Assignments
-static const int STEP_PINS[5] =    {4,  22, 13, 18, 25};
-static const int DIR_PINS[5]  =    {2,  21, 12, 15, 26};
-static const int ENABLE_PINS[5] =  {5,  23, 14, 19, 27};
-static const int ENDSTOP_PINS[5] = {32, 33, 34, 35, 36};
+
+static const int STEP_PINS[5]    = {22, 4,  18, 13, 26};
+static const int DIR_PINS[5]     = {21, 0,  19, 12, 15};
+static const int ENABLE_PINS[5]  = {23, 2,   5, 14, 27};
+static const int ENDSTOP_PINS[5] = {25, 34, 35, 32, 33};
+
 
 // Stepper Motor Objects
 ESP_FlexyStepper steppers[5];
@@ -55,11 +56,11 @@ void setup() {
   // Register each command with the same callback (handleCommand).
   // In handleCommand(), we distinguish them by the first argument.
     // Register commands separately
-    parser.registerCommand("MOVE", "ii",       &handleMove);
+    parser.registerCommand("MOVE", "id",       &handleMove);
     parser.registerCommand("STOP", "i",        &handleStop);
     parser.registerCommand("HOME", "i",        &handleHome);
     parser.registerCommand("SETPOSITION", "i", &handleSetPosition);
-    parser.registerCommand("DIR", "ii",        &handleDirection);
+    parser.registerCommand("DIR", "id",        &handleDirection);
 
   setupSteppers();
   setupEndstops();
@@ -95,11 +96,12 @@ void setupSteppers() {
       digitalWrite(ENABLE_PINS[i], LOW);
     }
     steppers[i].setStepsPerRevolution(200);
-    steppers[i].setSpeedInStepsPerSecond(800);
-    steppers[i].setAccelerationInStepsPerSecondPerSecond(800);
+    steppers[i].setSpeedInStepsPerSecond(400);
+    steppers[i].setAccelerationInStepsPerSecondPerSecond(50);
+    steppers[i].setDecelerationInStepsPerSecondPerSecond(50);
 
     // If needed, call startAsService(0) to run the stepper in a timed interrupt
-    steppers[i].startAsService(0);
+    steppers[i].startAsService(1);
   }
 }
 
@@ -147,7 +149,8 @@ void processSerialCommand(HardwareSerial* serial) {
 //---------------------------------------------------------
 void handleMove(MyCommandParser::Argument *args, char *response) {
     int motorIndex = (int)args[0].asInt64;
-    long steps = (long)args[1].asInt64;
+    long steps = (long)args[1].asDouble;
+    
     moveMotor(motorIndex, steps);
     strlcpy(response, "success", MyCommandParser::MAX_RESPONSE_SIZE);
 }
@@ -166,7 +169,7 @@ void handleHome(MyCommandParser::Argument *args, char *response) {
 
 void handleSetPosition(MyCommandParser::Argument *args, char *response) {
     int motorIndex = (int)args[0].asInt64;
-    long position = (long)args[1].asInt64;
+    long position = (long)args[1].asDouble;
     setPosition(motorIndex, position);
     strlcpy(response, "success", MyCommandParser::MAX_RESPONSE_SIZE);
 }
@@ -191,7 +194,8 @@ void moveMotor(int motorIndex, long steps) {
     Log.errorln("Invalid motor index for MOVE: %d", motorIndex);
     return;
   }
-  Log.traceln("MOVE motor %d by %d steps", motorIndex, steps);
+  Serial.println(steps);
+  Log.traceln("MOVE motor %d by %l steps", motorIndex, steps);
 
   // Check if direction is inverted
   if (motorDirectionInverted[motorIndex]) {
@@ -242,7 +246,7 @@ void setPosition(int motorIndex, long position) {
     Log.errorln("Invalid motor index for SETPOSITION: %d", motorIndex);
     return;
   }
-  Log.traceln("SETPOSITION motor %d to %ld", motorIndex, position);
+  Log.traceln("SETPOSITION motor %d to %l", motorIndex, position);
   steppers[motorIndex].setCurrentPositionInSteps(position);
 }
 
