@@ -1,6 +1,3 @@
-Here is the **README.md** in Markdown format:  
-
-```markdown
 # ESP32 Stepper Motor Controller Firmware
 
 This firmware controls **5 stepper motors** using an **ESP32** with **DRV8825 drivers**.  
