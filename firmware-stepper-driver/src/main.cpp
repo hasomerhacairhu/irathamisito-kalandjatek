@@ -190,7 +190,7 @@ void handleDirection(MyCommandParser::Argument *args, char *response) {
 // Helper Functions
 //---------------------------------------------------------
 void moveMotor(int motorIndex, long steps) {
-  if (motorIndex < 0 || motorIndex >= 5) {
+  if (motorIndex < 1 || motorIndex > 5) {
     Log.errorln("Invalid motor index for MOVE: %d", motorIndex);
     return;
   }
@@ -198,67 +198,67 @@ void moveMotor(int motorIndex, long steps) {
   Log.traceln("MOVE motor %d by %l steps", motorIndex, steps);
 
   // Check if direction is inverted
-  if (motorDirectionInverted[motorIndex]) {
+  if (motorDirectionInverted[motorIndex-1]) {
     steps = -steps;
   }
 
-  long currentPos = steppers[motorIndex].getCurrentPositionInSteps();
+  long currentPos = steppers[motorIndex-1].getCurrentPositionInSteps();
   long targetPos  = currentPos + steps;
-  steppers[motorIndex].setTargetPositionInSteps(targetPos);
+  steppers[motorIndex-1].setTargetPositionInSteps(targetPos);
 }
 
 void stopMotor(int motorIndex) {
-  if (motorIndex < 0 || motorIndex >= 5) {
+  if (motorIndex < 1 || motorIndex > 5) {
     Log.errorln("Invalid motor index for STOP: %d", motorIndex);
     return;
   }
   Log.traceln("STOP motor %d", motorIndex);
 
-  long currentPos = steppers[motorIndex].getCurrentPositionInSteps();
-  steppers[motorIndex].setTargetPositionInSteps(currentPos);
+  long currentPos = steppers[motorIndex-1].getCurrentPositionInSteps();
+  steppers[motorIndex-1].setTargetPositionInSteps(currentPos);
 }
 
 void homeMotor(int motorIndex) {
-  if (motorIndex < 0 || motorIndex >= 5) {
+  if (motorIndex < 1 || motorIndex > 5) {
     Log.errorln("Invalid motor index for HOME: %d", motorIndex);
     return;
   }
   Log.traceln("HOME motor %d", motorIndex);
 
-  int direction = (motorDirectionInverted[motorIndex]) ? 1 : -1;
+  int direction = (motorDirectionInverted[motorIndex-1]) ? 1 : -1;
   long bigMove  = 20000;  // enough steps to guarantee hitting the endstop
-  steppers[motorIndex].setTargetPositionInSteps(
-      steppers[motorIndex].getCurrentPositionInSteps() + direction * bigMove
+  steppers[motorIndex-1].setTargetPositionInSteps(
+      steppers[motorIndex-1].getCurrentPositionInSteps() + direction * bigMove
   );
 
   // Blocking homing approach (simple example):
   while (!isEndstopTriggered(motorIndex)) {
-    steppers[motorIndex].processMovement();
+    steppers[motorIndex-1].processMovement();
   }
 
   stopMotor(motorIndex);
-  steppers[motorIndex].setCurrentPositionInSteps(0);
+  steppers[motorIndex-1].setCurrentPositionInSteps(0);
   Log.traceln("Homing complete for motor %d, position set to 0", motorIndex);
 }
 
 void setPosition(int motorIndex, long position) {
-  if (motorIndex < 0 || motorIndex >= 5) {
+  if (motorIndex < 1 || motorIndex > 5) {
     Log.errorln("Invalid motor index for SETPOSITION: %d", motorIndex);
     return;
   }
   Log.traceln("SETPOSITION motor %d to %l", motorIndex, position);
-  steppers[motorIndex].setCurrentPositionInSteps(position);
+  steppers[motorIndex-1].setCurrentPositionInSteps(position);
 }
 
 void setDirectionInverted(int motorIndex, bool inverted) {
-  if (motorIndex < 0 || motorIndex >= 5) {
+  if (motorIndex < 1 || motorIndex > 5) {
     Log.errorln("Invalid motor index for DIR: %d", motorIndex);
     return;
   }
-  motorDirectionInverted[motorIndex] = inverted;
+  motorDirectionInverted[motorIndex-1] = inverted;
   Log.traceln("DIR motor %d set to %s", motorIndex, (inverted ? "INVERTED" : "NORMAL"));
 }
 
 bool isEndstopTriggered(int motorIndex) {
-  return (digitalRead(ENDSTOP_PINS[motorIndex]) == LOW);  // Adjust if needed
+  return (digitalRead(ENDSTOP_PINS[motorIndex-1]) == LOW);  // Adjust if needed
 }
