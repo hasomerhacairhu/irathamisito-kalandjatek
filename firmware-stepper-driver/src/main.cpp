@@ -17,6 +17,7 @@ static const int STEP_PINS[5] = {22, 4, 18, 13, 26};
 static const int DIR_PINS[5] = {21, 0, 19, 12, 15};
 static const int ENABLE_PINS[5] = {23, 2, 5, 14, 27};
 static const int ENDSTOP_PINS[5] = {25, 34, 35, 32, 33};
+// static const int ENDSTOP_PINS[5] = {25, 34, 35, 39, 33};
 
 // Stepper Motor Objects
 ESP_FlexyStepper steppers[5];
@@ -34,6 +35,7 @@ void handleMove(MyCommandParser::Argument *args, char *response);
 void handleGoto(MyCommandParser::Argument *args, char *response);
 void handleStop(MyCommandParser::Argument *args, char *response);
 void handleHome(MyCommandParser::Argument *args, char *response);
+void handleHomeAll(MyCommandParser::Argument *args, char *response);
 void handleSetPosition(MyCommandParser::Argument *args, char *response);
 void handleDirection(MyCommandParser::Argument *args, char *response);
 void handleSpeed(MyCommandParser::Argument *args, char *response);
@@ -45,6 +47,7 @@ void moveMotor(int motorIndex, long steps);
 void goTo(int motorIndex, long targetPos);
 void stopMotor(int motorIndex);
 void homeMotor(int motorIndex);
+void homeAllMotors();
 void setPosition(int motorIndex, long position);
 void setDirectionInverted(int motorIndex, bool inverted);
 bool isEndstopTriggered(int motorIndex);
@@ -70,13 +73,14 @@ void setup()
     Log.begin(LOG_LEVEL_TRACE, &Serial);
 
     // Initialize secondary serial
-    CommandSerial.begin(115200, SERIAL_8N1, RXD2, TXD2);
+    CommandSerial.begin(9600, SERIAL_8N1, RXD2, TXD2);
 
     // Register commands separately
     parser.registerCommand("MOVE", "id", &handleMove);
     parser.registerCommand("STOP", "i", &handleStop);
     parser.registerCommand("HOME", "i", &handleHome);
-    parser.registerCommand("SETPOSITION", "i", &handleSetPosition);
+    parser.registerCommand("HOMEALL", "", &handleHomeAll);
+    parser.registerCommand("SETPOSITION", "id", &handleSetPosition);
     parser.registerCommand("DIR", "id", &handleDirection);
     parser.registerCommand("SPEED", "id", &handleSpeed); // ✅ New Command Added
     parser.registerCommand("GOTO", "id", &handleGoto);   // ✅ New Command
@@ -144,7 +148,8 @@ void setupEndstops()
 {
     for (int i = 0; i < 5; i++)
     {
-        pinMode(ENDSTOP_PINS[i], INPUT_PULLUP);
+        // pinMode(ENDSTOP_PINS[i], INPUT_PULLUP);
+        pinMode(ENDSTOP_PINS[i], INPUT);
     }
 }
 
@@ -207,6 +212,12 @@ void handleHome(MyCommandParser::Argument *args, char *response)
     strlcpy(response, "success", MyCommandParser::MAX_RESPONSE_SIZE);
 }
 
+
+void handleHomeAll(MyCommandParser::Argument *args, char *response) {
+    homeAllMotors();
+    strlcpy(response, "success", MyCommandParser::MAX_RESPONSE_SIZE);
+}
+
 void handleSetPosition(MyCommandParser::Argument *args, char *response)
 {
     int motorIndex = (int)args[0].asInt64;
@@ -228,7 +239,7 @@ void handleSpeed(MyCommandParser::Argument *args, char *response)
     int motorIndex = (int)args[0].asInt64; // First argument: motor index
     float speed = (float)args[1].asDouble; // Second argument: speed in steps per second
 
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for SPEED: %d", motorIndex);
         strlcpy(response, "failure", MyCommandParser::MAX_RESPONSE_SIZE);
@@ -242,7 +253,7 @@ void handleSpeed(MyCommandParser::Argument *args, char *response)
     }
 
     // ✅ Set the speed of the motor
-    steppers[motorIndex].setSpeedInStepsPerSecond(speed);
+    steppers[motorIndex-1].setSpeedInStepsPerSecond(speed);
 
     Log.traceln("SPEED motor %d set to %.2f steps per second", motorIndex, speed);
     strlcpy(response, "success", MyCommandParser::MAX_RESPONSE_SIZE);
@@ -253,9 +264,10 @@ void reportMotorPositions()
     StaticJsonDocument<200> jsonDoc; // Create a JSON document (size 200 bytes)
 
     // Add motor positions to JSON
-    for (int i = 0; i < 5; i++)
+    for (int i = 1; i <= 5; i++)
     {
-        jsonDoc["motor" + String(i + 1)] = steppers[i].getCurrentPositionInSteps();
+        jsonDoc["motor" + String(i)] = steppers[i-1].getCurrentPositionInSteps();
+        // jsonDoc["limitsw" + String(i)] = (int)isEndstopTriggered(i);
     }
 
     // Convert JSON to a string and send it via CommandSerial
@@ -271,7 +283,7 @@ void reportMotorPositions()
 void moveMotor(int motorIndex, long steps)
 {
 
-    long currentPos = steppers[motorIndex].getCurrentPositionInSteps();
+    long currentPos = steppers[motorIndex-1].getCurrentPositionInSteps();
     long targetPos = currentPos + steps;
 
     goTo(motorIndex, targetPos);
@@ -279,7 +291,7 @@ void moveMotor(int motorIndex, long steps)
 
 void goTo(int motorIndex, long targetPos)
 {
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for MOVE: %d", motorIndex);
         return;
@@ -297,56 +309,62 @@ void goTo(int motorIndex, long targetPos)
     }
 
     Log.traceln("MOVE motor %d to position %l", motorIndex, targetPos);
-    steppers[motorIndex].setTargetPositionInSteps(targetPos);
+    steppers[motorIndex-1].setTargetPositionInSteps(targetPos);
 }
 
 void stopMotor(int motorIndex)
 {
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for STOP: %d", motorIndex);
         return;
     }
     Log.traceln("STOP motor %d", motorIndex);
 
-    long currentPos = steppers[motorIndex].getCurrentPositionInSteps();
-    steppers[motorIndex].setTargetPositionInSteps(currentPos);
+    long currentPos = steppers[motorIndex-1].getCurrentPositionInSteps();
+    steppers[motorIndex-1].setTargetPositionInSteps(currentPos);
 }
 
 void homeMotor(int motorIndex)
 {
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for HOME: %d", motorIndex);
         return;
     }
     Log.traceln("HOME motor %d", motorIndex);
 
-    int direction = (motorDirectionInverted[motorIndex]) ? 1 : -1;
+    int direction = (motorDirectionInverted[motorIndex-1]) ? 1 : -1;
     long bigMove = 20000; // enough steps to guarantee hitting the endstop
-    steppers[motorIndex].setTargetPositionInSteps(
-        steppers[motorIndex].getCurrentPositionInSteps() + direction * bigMove);
-    isHoming[motorIndex] = true;
+    steppers[motorIndex-1].setTargetPositionInSteps(
+        steppers[motorIndex-1].getCurrentPositionInSteps() + direction * bigMove);
+    isHoming[motorIndex-1] = true;
     tWatchHoming.enableIfNot();
+}
+
+void homeAllMotors() {
+    for (int motorId = 1; motorId <= 5; ++motorId) {
+        homeMotor(motorId);
+    }
 }
 
 void watchHoming()
 {
     bool isAnyOfMotorsHoming = false;
 
-    for (size_t motorIndex = 0; motorIndex < 5; motorIndex++)
+    for (size_t motorIndex = 1; motorIndex <= 5; motorIndex++)
     {
 
-        if (isHoming[motorIndex] && isEndstopTriggered(motorIndex))
+        if (isHoming[motorIndex-1] && isEndstopTriggered(motorIndex))
         {
-            steppers[motorIndex].setCurrentPositionInSteps(LIMIT_SWITCH_POSITION);
-            isHoming[motorIndex] = false;
+            steppers[motorIndex-1].setCurrentPositionInSteps(LIMIT_SWITCH_POSITION);
+            isHoming[motorIndex-1] = false;
             stopMotor(motorIndex);
             Log.traceln("Homing complete for motor %d, position set to 0", motorIndex);
         }
         // isAnyOfMotorsHoming |= isHoming[motorIndex];
         // Only set this flag **AFTER** checking all motors
-        if (isHoming[motorIndex])
+        if (isHoming[motorIndex-1])
         {
             isAnyOfMotorsHoming = true;
         }
@@ -362,27 +380,27 @@ void watchHoming()
 
 void setPosition(int motorIndex, long position)
 {
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for SETPOSITION: %d", motorIndex);
         return;
     }
     Log.traceln("SETPOSITION motor %d to %l", motorIndex, position);
-    steppers[motorIndex].setCurrentPositionInSteps(position);
+    steppers[motorIndex-1].setCurrentPositionInSteps(position);
 }
 
 void setDirectionInverted(int motorIndex, bool inverted)
 {
-    if (motorIndex < 0 || motorIndex >= 5)
+    if (motorIndex < 1 || motorIndex > 5)
     {
         Log.errorln("Invalid motor index for DIR: %d", motorIndex);
         return;
     }
-    motorDirectionInverted[motorIndex] = inverted;
+    motorDirectionInverted[motorIndex-1] = inverted;
     Log.traceln("DIR motor %d set to %s", motorIndex, (inverted ? "INVERTED" : "NORMAL"));
 }
 
 bool isEndstopTriggered(int motorIndex)
 {
-    return (digitalRead(ENDSTOP_PINS[motorIndex]) == HIGH); // Adjust if needed
+    return (digitalRead(ENDSTOP_PINS[motorIndex-1]) == HIGH); // Adjust if needed
 }
