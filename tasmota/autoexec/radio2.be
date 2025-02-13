@@ -14,12 +14,6 @@ class StepperDriver
     end
     var ser, topic
     def stepper_command(cmd, idx, payload, payload_json)
-        print(self.ser)
-
-        print(cmd)
-        print(idx)
-        print(payload)
-        print(payload_json)
         self.ser.write(bytes().fromstring(payload))
         tasmota.resp_cmnd_done()
     end
