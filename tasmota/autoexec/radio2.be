@@ -22,7 +22,7 @@ class StepperDriver
         self.topic = tasmota.cmd("Topic")["Topic"]
         self.ser = serial(16, 17, 9600, serial.SERIAL_8N1)
         tasmota.add_cmd('stepper', /cmd, idx, payload, payload_json-> self.stepper_command(cmd, idx, payload, payload_json))
-        tasmota.add_cron("* * * * * *", /-> self.every_second(), "parse_serial")
+        # tasmota.add_cron("* * * * * *", /-> self.every_second(), "parse_serial")
     end
 end
 
