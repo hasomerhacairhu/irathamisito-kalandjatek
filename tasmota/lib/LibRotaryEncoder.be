@@ -28,7 +28,6 @@ class RotaryEncoder
         self.topic = topic
     end
 
-
     def every_second()
         if (self.old_knob_step_counter != self.knob_step_counter)
             import mqtt
@@ -75,15 +74,6 @@ class RotaryEncoder
                     end
                 end
             end
-
-            # import string
-            # log(string.format("Buffer: %d,%d,%d,%d - %d", 
-            # self.knob_signal_window[0],
-            # self.knob_signal_window[1],
-            # self.knob_signal_window[2],
-            # self.knob_signal_window[3],
-            # self.knob_step_counter
-            # ))
 
             self.old_state = this_state
         end

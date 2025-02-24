@@ -4,6 +4,9 @@ class Multiplexer
     var tolerance
     var topic, log_level
 
+    # Distributed iteration globals. 
+    var mux_iteration_counter, is_mux_dirty, output_string
+
     def init()
         self.values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.old_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -30,6 +33,9 @@ class Multiplexer
         ]
         self.address_pins = [-1,-1,-1,-1]
         self.tolerance = 0
+        self.mux_iteration_counter = 0
+        self.is_mux_dirty = false
+        self.output_string = ""
     end
 
     def set_topic(topic)
@@ -85,40 +91,52 @@ class Multiplexer
         import json
         import math
         import string
-        var is_dirty = false;
-        var output_string = ""
-        for address: 0 .. 14
-            self.write_out_address(address)
-            self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
-            self.mapped_values[address] = self.map_raw_value(self.values[address])
-            
-            output_string += self.character_map[self.mapped_values[address]]
-
-            if (math.abs(self.values[address] - self.old_values[address]) > self.tolerance)
-                is_dirty = true
-            end
-        end
-        var return_values = {
-            "is_dirty":is_dirty,
-            "analog_value": self.values,
-            "mapped_values": self.mapped_values,
-            "mapped_string": output_string
-        }
+        # Distributed iteration of 15 letters. Runs every 100ms
+        var address = self.mux_iteration_counter
         
-        for i: 0 .. 15
-            self.old_values[i] = self.values[i]
-        end
+        self.write_out_address(address)
+        self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
+        self.mapped_values[address] = self.map_raw_value(self.values[address])
+        
+        self.output_string += self.character_map[self.mapped_values[address]]
 
-        log(return_values, 4)
-        return return_values
+        if (math.abs(self.values[address] - self.old_values[address]) > self.tolerance)
+            self.is_mux_dirty = true
+        end
+        # end
+        if (self.mux_iteration_counter == 14)
+            
+            var return_values = {
+                "is_dirty":self.is_mux_dirty,
+                "analog_value": self.values,
+                "mapped_values": self.mapped_values,
+                "mapped_string": self.output_string
+            }
+            
+            for i: 0 .. 14
+                self.old_values[i] = self.values[i]
+            end
+
+            log(return_values, 4)
+            self.mux_iteration_counter = 0
+            self.is_mux_dirty = false
+            self.output_string = ""
+            return return_values
+        end
+        self.mux_iteration_counter += 1
+        return false
     end
 
-    def every_second()
-        import json
-        import mqtt
-        var mux = self.read()
-        if (mux["is_dirty"])
-            mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mux))
+    def every_100ms()
+        var mux_data = self.read()
+        
+        if (mux_data != false)
+            import json
+            import mqtt
+            if (mux_data["is_dirty"])
+                mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mux_data))
+            end
         end
+
     end
 end
