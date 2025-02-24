@@ -6,9 +6,12 @@ class StepperDriver
     def every_second()
         if (self.ser.available() > 0)
             import string
+            import mqtt
             var data = self.ser.read()
             if (data != nil)
-                tasmota.cmd(string.format("Publish tele/%s/stepper %s", self.topic, data.asstring()))
+                #tasmota.cmd(string.format("Publish tele/%s/stepper %s", self.topic, data.asstring()))
+                mqtt.publish("tele/" + self.topic + "/stepper", data.asstring())
+
             end
         end
     end
@@ -28,7 +31,7 @@ class StepperDriver
         self.topic = tasmota.cmd("Topic")["Topic"]
         self.ser = serial(16, 17, 9600, serial.SERIAL_8N1)
         tasmota.add_cmd('stepper', /cmd, idx, payload, payload_json-> self.stepper_command(cmd, idx, payload, payload_json))
-        tasmota.set_timer(10000, /-> self.go_home())
+        tasmota.set_timer(15000, /-> self.go_home())
     end
 end
 
