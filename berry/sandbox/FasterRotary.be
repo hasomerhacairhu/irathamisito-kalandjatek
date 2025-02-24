@@ -4,6 +4,7 @@ class RotaryEncoder
     var a_pin, b_pin
     var fast_loop_closure
     var old_state
+    # var on_tick_cb
     var knob_signal_window, knob_step_counter, old_knob_step_counter
     var topic
     
@@ -28,6 +29,9 @@ class RotaryEncoder
         self.topic = topic
     end
 
+    # def set_on_tick_callback (cb)
+    #     self.on_tick_cb = cb
+    # end
 
     def every_second()
         if (self.old_knob_step_counter != self.knob_step_counter)
@@ -89,3 +93,11 @@ class RotaryEncoder
         end
     end
 end
+
+var PIN_ROTARY_A = 17
+var PIN_ROTARY_B = 16
+
+var topic = tasmota.cmd("Topic")["Topic"]
+var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
+encoder.set_topic(topic)
+tasmota.add_driver(encoder)
