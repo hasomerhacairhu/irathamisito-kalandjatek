@@ -96,6 +96,7 @@ class Multiplexer
         # for address: 0 .. 14
         # Distributed iteration of 15 letters. Runs every 100ms
         var address = self.mux_iteration_counter
+        
         self.write_out_address(address)
         self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
         self.mapped_values[address] = self.map_raw_value(self.values[address])
@@ -109,7 +110,7 @@ class Multiplexer
         if (self.mux_iteration_counter == 14)
             
             var return_values = {
-                "is_dirty":self.is_dirty,
+                "is_dirty":self.is_mux_dirty,
                 "analog_value": self.values,
                 "mapped_values": self.mapped_values,
                 "mapped_string": self.output_string
@@ -130,18 +131,44 @@ class Multiplexer
     end
 
     def every_100ms()
-        import json
-        import mqtt
-
-        var mux = self.read()
-        if (mux)
+        var mux_data = self.read()
+        # import string
+        
+        if (mux_data != false)
+            # log (string.format("condition %s \n %s %s", mux_data != false, mux_data, type(mux_data)), 3)
             import json
             import mqtt
-            if (mux["is_dirty"])
-                mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mux))
+            # log(mux_data, 3)
+            if (mux_data["is_dirty"])
+                mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mux_data))
             end
         end
 
-
     end
 end
+
+var PIN_MUX_ADDR_0 = 15
+var PIN_MUX_ADDR_1 = 14
+var PIN_MUX_ADDR_2 = 12
+var PIN_MUX_ADDR_3 = 13
+var PIN_MUX_COM = 33
+
+var topic = tasmota.cmd("Topic")["Topic"]
+
+var mux = Multiplexer()
+
+#kilencedik karaktert átugorja valamiért
+var character_maps = {
+    "SUITCASE1_2": ["_", "M", "E", "G", "Y", "R", "I", "J", "Ó", "#", "Z", "S", "F", "#", "#", "#"],
+    "SUITCASE2_2": ["_", "K", "O", "V", "Á", "C", "S", "G", "Y", "#", "Ö", "R", "#", "#", "#", "#"],
+    "SUITCASE3_2": ["_", "R", "A", "P", "O", "S", "T", "I", "B", "#", "#", "#", "#", "#", "#", "#"],
+    "SUITCASE4_2": ["_", "B", "A", "K", "O", "S", "N", "D", "R", "#", "#", "#", "#", "#", "#", "#"],
+    "SUITCASE5_2": ["_", "B", "A", "L", "O", "G", "H", "É", "V", "#", "#", "#", "#", "#", "#", "#"],
+}
+
+mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
+mux.set_common_analog_input_pin(PIN_MUX_COM)
+mux.set_topic(topic)
+mux.set_character_map(character_maps["SUITCASE2_2"])
+mux.set_tolerance(15)
+tasmota.add_driver(mux)

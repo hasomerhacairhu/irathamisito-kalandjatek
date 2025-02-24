@@ -4,7 +4,6 @@ class RotaryEncoder
     var a_pin, b_pin
     var fast_loop_closure
     var old_state
-    # var on_tick_cb
     var knob_signal_window, knob_step_counter, old_knob_step_counter
     var topic
     
@@ -28,10 +27,6 @@ class RotaryEncoder
     def set_topic(topic)
         self.topic = topic
     end
-
-    # def set_on_tick_callback (cb)
-    #     self.on_tick_cb = cb
-    # end
 
     def every_second()
         if (self.old_knob_step_counter != self.knob_step_counter)
@@ -79,15 +74,6 @@ class RotaryEncoder
                     end
                 end
             end
-
-            # import string
-            # log(string.format("Buffer: %d,%d,%d,%d - %d", 
-            # self.knob_signal_window[0],
-            # self.knob_signal_window[1],
-            # self.knob_signal_window[2],
-            # self.knob_signal_window[3],
-            # self.knob_step_counter
-            # ))
 
             self.old_state = this_state
         end
