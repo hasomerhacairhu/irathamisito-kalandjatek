@@ -1,18 +1,17 @@
 class Multiplexer
-    var values, old_values, mapped_values, map
+    var values, old_values, mapped_values, analog_map, character_map
     var address_pins, common_pin
     var tolerance
     var topic, log_level
-    
-    # Distributed iteration globals. 
-    var mux_iteration_counter, is_mux_dirty
 
+    # Distributed iteration globals. 
+    var mux_iteration_counter, is_mux_dirty, output_string
 
     def init()
         self.values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.old_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.mapped_values  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        self.map = [
+        self.analog_map = [
             [176, 407, 1],
             [408, 638, 2],
             [639, 870, 3],
@@ -33,13 +32,20 @@ class Multiplexer
             # [3882, 4092, 0],
         ]
         self.address_pins = [-1,-1,-1,-1]
-        self.tolerance = 10
-        self.topic = tasmota.cmd("Topic")["Topic"]
-        self.log_level = tasmota.cmd("WebLog")["WebLog"]
+        self.tolerance = 0
         self.mux_iteration_counter = 0
         self.is_mux_dirty = false
-
+        self.output_string = ""
     end
+
+    def set_topic(topic)
+        self.topic = topic
+    end
+
+    def set_character_map (character_map)
+        self.character_map = character_map
+    end
+
 
     def set_common_analog_input_pin(pin_common_adc)
         import string
@@ -68,7 +74,7 @@ class Multiplexer
     end
 
     def map_raw_value(raw_value)
-        for range: self.map
+        for range: self.analog_map
             log(range)
             var from = range[0]
             var to = range[1]
@@ -84,60 +90,58 @@ class Multiplexer
     def read()
         import json
         import math
-
-        # Distributed iteration of 16 letters. Runs every 100ms
+        import string
+        # var is_dirty = false;
+        # var output_string = ""
+        # for address: 0 .. 14
+        # Distributed iteration of 15 letters. Runs every 100ms
         var address = self.mux_iteration_counter
         self.write_out_address(address)
         self.values[address] = json.load(tasmota.read_sensors())["ANALOG"]["A1"]
         self.mapped_values[address] = self.map_raw_value(self.values[address])
+        
+        self.output_string += self.character_map[self.mapped_values[address]]
+
         if (math.abs(self.values[address] - self.old_values[address]) > self.tolerance)
             self.is_mux_dirty = true
         end
-
-
-        if (self.mux_iteration_counter == 15)
-            var return_values = [self.is_mux_dirty, self.mapped_values, self.values]
-            for i: 0 .. 15
+        # end
+        if (self.mux_iteration_counter == 14)
+            
+            var return_values = {
+                "is_dirty":self.is_dirty,
+                "analog_value": self.values,
+                "mapped_values": self.mapped_values,
+                "mapped_string": self.output_string
+            }
+            
+            for i: 0 .. 14
                 self.old_values[i] = self.values[i]
             end
+
             log(return_values, 4)
             self.mux_iteration_counter = 0
             self.is_mux_dirty = false
-            return return_values        
+            self.output_string = ""
+            return return_values
         end
         self.mux_iteration_counter += 1
         return false
     end
 
     def every_100ms()
+        import json
+        import mqtt
+
         var mux = self.read()
         if (mux)
             import json
             import mqtt
-            var is_dirty = mux[0]
-            var mapped_values = mux[1]
-
-
-            if (is_dirty)
-                mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mapped_values))
+            if (mux["is_dirty"])
+                mqtt.publish("tele/" + self.topic +"/MUX", json.dump(mux))
             end
         end
 
+
     end
 end
-
-
-
-
-var PIN_MUX_ADDR_0 = 15
-var PIN_MUX_ADDR_1 = 14
-var PIN_MUX_ADDR_2 = 12
-var PIN_MUX_ADDR_3 = 13
-var PIN_MUX_COM = 33
-
-
-
-var mux = Multiplexer()
-mux.set_address_pins(PIN_MUX_ADDR_0,PIN_MUX_ADDR_1,PIN_MUX_ADDR_2,PIN_MUX_ADDR_3)
-mux.set_common_analog_input_pin(PIN_MUX_COM)
-tasmota.add_driver(mux)
