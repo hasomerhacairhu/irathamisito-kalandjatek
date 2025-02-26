@@ -79,3 +79,11 @@ class RotaryEncoder
         end
     end
 end
+
+var PIN_ROTARY_A = 17
+var PIN_ROTARY_B = 16
+
+var topic = tasmota.cmd("Topic")["Topic"]
+var encoder = RotaryEncoder(PIN_ROTARY_A,PIN_ROTARY_B)
+encoder.set_topic(topic)
+tasmota.add_driver(encoder)

@@ -283,7 +283,7 @@ void reportMotorPositions()
 void moveMotor(int motorIndex, long steps)
 {
 
-    long currentPos = steppers[motorIndex-1].getCurrentPositionInSteps();
+    long currentPos = steppers[motorIndex-1].getTargetPositionInSteps();
     long targetPos = currentPos + steps;
 
     goTo(motorIndex, targetPos);
