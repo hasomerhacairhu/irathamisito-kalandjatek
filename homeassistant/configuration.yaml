@@ -25,6 +25,3 @@ mqtt:
 
 # template:
 #   sensor: !include_dir_merge_list templates/
-
-
-
